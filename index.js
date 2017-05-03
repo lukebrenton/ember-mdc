@@ -24,7 +24,7 @@ var materialPackages = [
   { css: true, js: true, name: 'menu', path: 'menu' },
   { css: true, js: true, name: 'radio', path: 'radio' },
   { css: true, js: true, name: 'ripple', path: 'ripple' },
-  { css: false, js: false, name: 'rtl', path: 'rtl' },
+  // { css: false, js: false, name: 'rtl', path: 'rtl' },
   { css: true, js: true, name: 'select', path: 'select' },
   { css: true, js: true, name: 'snackbar', path: 'snackbar' },
   { css: true, js: false, name: 'switch', path: 'switch' },
@@ -44,14 +44,14 @@ module.exports = {
    */
   included: function(app) {
     materialPackages.forEach(function(pkg) {
+      if (pkg.css) {
+        app.import(`vendor/@material/${pkg.path}/dist/mdc.${pkg.path}.min.css`);
+        app.import(`vendor/@material/${pkg.path}/mdc-${pkg.path}.scss`);
+      }
       if (pkg.js) {
-        app.import(`vendor/ember-mdc/@material/${pkg.path}/mdc.${pkg.name}.min.js`, {
+        app.import(`vendor/@material/${pkg.path}/dist/mdc.${pkg.name}.min.js`, {
           using: [{ as: `@material/${pkg.path}`, transformation: 'amd' }]
         });
-      }
-      if (pkg.css) {
-        app.import(`vendor/ember-mdc/@material/${pkg.path}/mdc.${pkg.name}.min.css`);
-        // app.import(`vendor/ember-mdc/@material/${pkg.path}/mdc-${pkg.path}.scss`);
       }
     });
   },
@@ -68,15 +68,15 @@ module.exports = {
     var trees = materialPackages.map(function(pkg) {
       var include = [];
       if (pkg.css) {
-        include.push(`@material/${pkg.path}/**/mdc.${pkg.name}.min.css`);
-        include.push(`@material/${pkg.path}/*.scss`);
+        include.push(`dist/mdc.${pkg.path}.min.css`);
+        include.push(`*.scss`);
       }
       if (pkg.js) {
-        include.push(`@material/${pkg.path}/**/mdc.${pkg.name}.min.js`);
+        include.push(`dist/mdc.${pkg.name}.min.js`);
       }
 
-      return new Funnel(`node_modules`, {
-        destDir: 'ember-mdc',
+      return new Funnel(`node_modules/@material/${pkg.path}`, {
+        destDir: `@material/${pkg.path}`,
         include: include
       });
     });

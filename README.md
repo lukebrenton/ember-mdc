@@ -1,27 +1,25 @@
 # ember-mdc
 
-This README outlines the details of collaborating on this Ember addon.
+## Install
 
-## Installation
+```bash
+ember install ember-mdc
 
-* `git clone <repository-url>` this repository
-* `cd ember-mdc`
-* `npm install`
-* `bower install`
+# or the following
+#ember install https://github.com/austp/ember-mdc.git
+#ember generate ember-mdc
+```
 
-## Running
+## Include JS
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+```js
+import { MDCTextfield, MDCTextfieldFoundation } from '@material/textfield';
+```
 
-## Running Tests
+## Include SASS
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+(If you aren't using SASS, don't worry. The CSS is loaded automatically.)
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+```scss
+@import 'vendor/@material/theme/mdc-theme';
+```
