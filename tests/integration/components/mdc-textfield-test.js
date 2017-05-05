@@ -21,7 +21,7 @@ test('it supports the ID attribute', function(assert) {
 test('it will generate an ID when not provided', function(assert) {
   this.render(hbs`{{mdc-textfield}}`);
 
-  const id_regex = /^ember\d{3,}/;
+  const id_regex = /^ember\d+/;
 
   let container = this.$().children();
   assert.equal(id_regex.test(container[0].id), true, 'the container has the correct ID');
@@ -37,7 +37,7 @@ test('it supports the dense attribute for single-line textfields', function(asse
   this.render(hbs`{{mdc-textfield id="test" dense=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--dense mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -47,7 +47,7 @@ test('it supports the dense attribute for multi-line textfields', function(asser
   this.render(hbs`{{mdc-textfield id="test" dense=true multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--dense mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -57,7 +57,7 @@ test('it supports the disabled attribute for single-line textfields', function(a
   this.render(hbs`{{mdc-textfield id="test" disabled=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--disabled mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" disabled="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" disabled="" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -67,7 +67,7 @@ test('it supports the disabled attribute for multi-line textfields', function(as
   this.render(hbs`{{mdc-textfield id="test" disabled=true multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--disabled mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" disabled="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" disabled="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -77,7 +77,7 @@ test('it supports the fullwidth attribute for single-line textfields', function(
   this.render(hbs`{{mdc-textfield id="test" fullwidth=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--fullwidth mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -87,7 +87,7 @@ test('it supports the fullwidth attribute for multi-line textfields', function(a
   this.render(hbs`{{mdc-textfield id="test" fullwidth=true multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--fullwidth mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -97,7 +97,7 @@ test('it supports the helptext attribute for single-line textfields', function(a
   this.render(hbs`{{mdc-textfield id="test" helptext="Sample helptext"}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" aria-controls="test-helptext" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" aria-controls="test-helptext" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <p id="test-helptext" aria-hidden="true" class="mdc-textfield-helptext  ">
@@ -110,7 +110,7 @@ test('it supports the helptext attribute for multi-line textfields', function(as
   this.render(hbs`{{mdc-textfield id="test" helptext="Sample helptext" multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" aria-controls="test-helptext" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" aria-controls="test-helptext" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <p id="test-helptext" aria-hidden="true" class="mdc-textfield-helptext  ">
@@ -123,7 +123,7 @@ test('it supports the helptextPersistent attribute for single-line textfields', 
   this.render(hbs`{{mdc-textfield id="test" helptext="Sample helptext" helptextPersistent=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" aria-controls="test-helptext" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" aria-controls="test-helptext" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <p id="test-helptext" aria-hidden="true" class="mdc-textfield-helptext mdc-textfield-helptext--persistent ">
@@ -136,7 +136,7 @@ test('it supports the helptextPersistent attribute for multi-line textfields', f
   this.render(hbs`{{mdc-textfield id="test" helptext="Sample helptext" helptextPersistent=true multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" aria-controls="test-helptext" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" aria-controls="test-helptext" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <p id="test-helptext" aria-hidden="true" class="mdc-textfield-helptext mdc-textfield-helptext--persistent ">
@@ -149,7 +149,7 @@ test('it supports the helptextValidation attribute for single-line textfields', 
   this.render(hbs`{{mdc-textfield id="test" helptext="Sample helptext" helptextValidation=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" aria-controls="test-helptext" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" aria-controls="test-helptext" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <p id="test-helptext" aria-hidden="true" class="mdc-textfield-helptext  mdc-textfield-helptext--validation-msg">
@@ -162,7 +162,7 @@ test('it supports the helptextValidation attribute for multi-line textfields', f
   this.render(hbs`{{mdc-textfield id="test" helptext="Sample helptext" helptextValidation=true multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" aria-controls="test-helptext" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" aria-controls="test-helptext" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <p id="test-helptext" aria-hidden="true" class="mdc-textfield-helptext  mdc-textfield-helptext--validation-msg">
@@ -176,7 +176,7 @@ test('it supports the inputAttributes attribute for single-line textfields', fun
   this.render(hbs`{{mdc-textfield id="test" inputAttributes=inputAttributes}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" maxlength="8" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" maxlength="8" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -187,7 +187,7 @@ test('it supports the inputAttributes attribute for multi-line textfields', func
   this.render(hbs`{{mdc-textfield id="test" inputAttributes=inputAttributes multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" maxlength="8" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" maxlength="8" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -197,7 +197,7 @@ test('it supports the label attribute for single-line textfields', function(asse
   this.render(hbs`{{mdc-textfield id="test" label="Test"}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label ">Test</label>
 </div>
 <!---->`);
@@ -207,7 +207,7 @@ test('it supports the label attribute for multi-line textfields', function(asser
   this.render(hbs`{{mdc-textfield id="test" label="Test" multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label ">Test</label>
 </div>
 <!---->`);
@@ -237,7 +237,7 @@ test('it supports the required attribute for single-line textfields', function(a
   this.render(hbs`{{mdc-textfield id="test" required=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" required="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" required="" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -247,7 +247,7 @@ test('it supports the required attribute for multi-line textfields', function(as
   this.render(hbs`{{mdc-textfield id="test" required=true multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" required="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" required="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -257,7 +257,7 @@ test('it supports the value attribute for single-line textfields', function(asse
   this.render(hbs`{{mdc-textfield id="test" value="test"}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" type="text" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="text" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label mdc-textfield__label--float-above"></label>
 </div>
 <!---->`);
@@ -269,7 +269,7 @@ test('it supports the value attribute for multi-line textfields', function(asser
   this.render(hbs`{{mdc-textfield id="test" value="test" multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label mdc-textfield__label--float-above"></label>
 </div>
 <!---->`);
@@ -281,7 +281,7 @@ test('it supports the type attribute for single-line textfields', function(asser
   this.render(hbs`{{mdc-textfield id="test" type="email"}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--upgraded">
-    <input id="test-input" type="email" name="" class="ember-text-field mdc-textfield__input ember-view">
+    <input id="test-input" type="email" class="ember-text-field mdc-textfield__input ember-view">
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -291,7 +291,7 @@ test('it supports the cols attribute for multi-line textfields', function(assert
   this.render(hbs`{{mdc-textfield id="test" cols="80" multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" cols="80" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" cols="80" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);
@@ -301,7 +301,7 @@ test('it supports the rows attribute for multi-line textfields', function(assert
   this.render(hbs`{{mdc-textfield id="test" rows="3" multiline=true}}`);
 
   assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded">
-    <textarea id="test-input" name="" rows="3" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+    <textarea id="test-input" rows="3" class="ember-text-area mdc-textfield__input ember-view"></textarea>
   <label for="test-input" class="mdc-textfield__label "></label>
 </div>
 <!---->`);

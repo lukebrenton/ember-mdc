@@ -18,8 +18,8 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   fullwidth: false,
 
-  /** @var {String} */
-  helptext: '',
+  /** @var {?String} */
+  helptext: null,
 
   /** @var {Boolean} */
   helptextPersistent: false,
@@ -27,20 +27,20 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   helptextValidation: false,
 
-  /** @var {String} */
-  id: '',
+  /** @var {?String} */
+  id: null,
 
   /** @var {Object} */
   inputAttributes: {},
 
-  /** @var {String} */
-  label: '',
+  /** @var {?String} */
+  label: null,
 
   /** @var {Boolean} */
   multiline: false,
 
-  /** @var {String} */
-  name: '',
+  /** @var {?String} */
+  name: null,
 
   /** @var {Boolean} */
   required: false,
@@ -51,8 +51,8 @@ export default Ember.Component.extend({
   /** @var {String} */
   type: 'text',
 
-  /** @var {String} */
-  value: '',
+  /** @var {?String} */
+  value: null,
 
   /***************
    * Ember Hooks *
@@ -67,7 +67,7 @@ export default Ember.Component.extend({
   },
 
   /** @var {Function} */
-  didRender() {
+  didInsertElement() {
     const id = this.get('id');
     const root = Ember.$(`#${id}`);
     const input = root.find('input, textarea');
@@ -163,5 +163,8 @@ export default Ember.Component.extend({
   eventHandlers: [],
 
   /** @var {String[]} */
-  inputClasses: ['mdc-textfield__input']
+  inputClasses: ['mdc-textfield__input'],
+
+  /** @var {MDCTextfield} */
+  textfield: null
 });

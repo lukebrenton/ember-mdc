@@ -2,7 +2,7 @@
 
 ## Global Attributes
 
-**dense** *{Boolean}* Flag indicating whether or not to use the dense styling (default: `false`)
+**dense** *{Boolean}* Use the dense styling (default: `false`)
 
 **disabled** *{Boolean}* Sets the disabled attribute on input/textarea element (default: `false`)
 
