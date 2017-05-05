@@ -36,19 +36,21 @@ Yields
 
 **attributes** *{Object}* If you need to set any additional attributes on the a/button element, set them here. i.e. `{formenctype: "multipart/form-data"}` (default: `{}`)
 
+**class** *{String}* Adds extra classes to the a/button element (default: `null`)
+
 **compact** *{Boolean}* Use the compact styling (default: `false`)
 
 **dense** *{Boolean}* Use the dense styling (default: `false`)
 
 **disabled** *{Boolean}* Sets the disabled attribute on the button element. (This *can* be used to disable links) (default: `false`)
 
-**form** *{String}* Sets the form attribute on the button element (default: `''`)
+**form** *{String}* Sets the form attribute on the button element (default: `null`)
 
 **href** *{String}* Sets the href attribute on the a element (default: `false`)
 
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
 
-**name** *{String}* Sets the name attribute on the button element (default: `''`)
+**name** *{String}* Sets the name attribute on the button element (default: `null`)
 
 **primary** *{Boolean}* Use the primary color (default: `false`)
 
@@ -56,6 +58,6 @@ Yields
 
 **ripple** *{Boolean}* Attach a ripple effect (default: `false`)
 
-**type** *{String}* Sets the type attribute on the button element (default: `''`)
+**type** *{String}* Sets the type attribute on the button element (default: `null`)
 
-**value** *{String}* Sets the value attribute on the button element (default: `''`)
+**value** *{String}* Sets the value attribute on the button element (default: `null`)

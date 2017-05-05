@@ -2,13 +2,15 @@
 
 ## Global Attributes
 
+**class** *{String}* Adds extra classes to the input/textarea element (default: `null`)
+
 **dense** *{Boolean}* Use the dense styling (default: `false`)
 
 **disabled** *{Boolean}* Sets the disabled attribute on input/textarea element (default: `false`)
 
 **fullwidth** *{Boolean}* Use the fullwidth textfield (default: `false`)
 
-**helptext** *{String}* The helptext to display (default: `''`)
+**helptext** *{String}* The helptext to display (default: `null`)
 
 **helptextPersistent** *{Boolean}* Make the helptext be persistent (default: `false`)
 
@@ -18,15 +20,15 @@
 
 **inputAttributes** *{Object}* If you need to set any additional attributes on the input/textarea element, set them here. i.e. `{minlength: 8}` (default: `{}`)
 
-**label** *{String}* The label text to display (default: `''`)
+**label** *{String}* The label text to display (default: `null`)
 
 **multiline** *{Boolean}* Use the multiline textfield (default: `false`)
 
-**name** *{String}* Sets the name attribute on the input/textarea element (default: `''`)
+**name** *{String}* Sets the name attribute on the input/textarea element (default: `null`)
 
 **required** *{Boolean}* Sets the required attribute on the input/textarea element (default: `false`)
 
-**value** *{String}* Sets the value attribute on the input/textarea element (default: `''`)
+**value** *{String}* Sets the value attribute on the input/textarea element (default: `null`)
 
 ## Single-line
 

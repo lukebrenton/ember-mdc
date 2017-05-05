@@ -6,6 +6,9 @@ export default Ember.Component.extend({
   /**************
    * Attributes *
    **************/
+  /** @var {?String} */
+  class: null,
+
   /** @var {?Number} */
   cols: null,
 

@@ -11,6 +11,9 @@ export default Ember.Component.extend({
   /** @var {Object} */
   attributes: {},
 
+  /** @var {?String} */
+  class: null,
+
   /** @var {Boolean} */
   compact: false,
 
@@ -64,6 +67,7 @@ export default Ember.Component.extend({
   /** @var {String[]} */
   classNameBindings: [
     'accent:mdc-button--accent',
+    'class',
     'compact:mdc-button--compact',
     'dense:mdc-button--dense',
     'primary:mdc-button--primary',

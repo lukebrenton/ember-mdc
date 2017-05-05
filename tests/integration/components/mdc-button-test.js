@@ -24,6 +24,12 @@ test('it supports the attributes attribute', function(assert) {
   assert.equal(this.$('button').attr('formenctype'), 'multipart/form-data');
 });
 
+test('it supports the class attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" class="test"}}Test{{/mdc-button}}`);
+
+  assert.equal(this.$('button').hasClass('test'), true);
+});
+
 test('it supports the compact attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" compact=true}}Test{{/mdc-button}}`);
 
