@@ -1,1 +1,40 @@
-THIS IS A TEST
+<div id="{{id}}" class="mdc-textfield {{if dense 'mdc-textfield--dense'}} {{if disabled 'mdc-textfield--disabled'}} {{if fullwidth 'mdc-textfield--fullwidth'}} {{if multiline 'mdc-textfield--multiline'}} {{if value 'mdc-textfield--upgraded'}}">
+  {{#if multiline}}
+    {{mdc-textfield/textarea
+      attributes=inputAttributes
+      cols=cols
+      disabled=disabled
+      helptext=helptext
+      id=id
+      name=name
+      onblur=(action 'on' 'blur')
+      onfocus=(action 'on' 'focus')
+      oninput=(action 'on' 'input')
+      onkeydown=(action 'on' 'keydown')
+      required=required
+      rows=rows
+      value=value
+    }}
+  {{else}}
+    {{mdc-textfield/input
+      attributes=inputAttributes
+      disabled=disabled
+      helptext=helptext
+      id=id
+      name=name
+      onblur=(action 'on' 'blur')
+      onfocus=(action 'on' 'focus')
+      oninput=(action 'on' 'input')
+      onkeydown=(action 'on' 'keydown')
+      required=required
+      type=type
+      value=value
+    }}
+  {{/if}}
+  <label for="{{id}}-input" class="mdc-textfield__label {{if value 'mdc-textfield__label--float-above'}}">{{label}}</label>
+</div>
+{{#if helptext}}
+<p id="{{id}}-helptext" class="mdc-textfield-helptext {{if helptextPersistent 'mdc-textfield-helptext--persistent'}} {{if helptextValidation 'mdc-textfield-helptext--validation-msg'}}" aria-hidden="true">
+  {{helptext}}
+</p>
+{{/if}}

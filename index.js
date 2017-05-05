@@ -50,7 +50,7 @@ module.exports = {
       }
       if (pkg.js) {
         app.import(`vendor/@material/${pkg.path}/dist/mdc.${pkg.name}.min.js`, {
-          using: [{ as: `@material/${pkg.path}`, transformation: 'amd' }]
+          using: [{ as: `@material/mdc-${pkg.path}`, transformation: 'amd' }]
         });
       }
     });
