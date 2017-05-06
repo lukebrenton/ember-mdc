@@ -7,6 +7,9 @@ export default Ember.TextField.extend({
   /** @var {Object} */
   attributes: {},
 
+  /** @var {?String} */
+  form: null,
+
   /** @var {String} */
   helptext: '',
 
@@ -26,7 +29,7 @@ export default Ember.TextField.extend({
    * Ember Hooks *
    ***************/
   /** @var {String[]} */
-  attributeBindings: ['aria-controls', 'id', 'onblur', 'onfocus', 'oninput', 'onkeydown'],
+  attributeBindings: ['aria-controls', 'form', 'id', 'onblur', 'onfocus', 'oninput', 'onkeydown'],
 
   /** @var {String[]} */
   classNames: ['mdc-textfield__input'],

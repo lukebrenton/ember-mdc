@@ -10,6 +10,8 @@
 
 **disabled** *{Boolean}* Sets the disabled attribute on the input/textarea element (default: `false`)
 
+**form** *{Boolean}* Sets the form attribute on the input/textarea element (default: `false`)
+
 **fullwidth** *{Boolean}* Use the fullwidth textfield (default: `false`)
 
 **helptext** *{String}* The helptext to display (default: `null`)

@@ -21,6 +21,9 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   disabled: false,
 
+  /** @var {?String} */
+  form: null,
+
   /** @var {Boolean} */
   fullwidth: false,
 
