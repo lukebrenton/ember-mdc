@@ -1,6 +1,6 @@
 # mdc-button
 
-## Usage
+### Usage
 
 ```hbs
 {{#mdc-button}}Flat Button{{/mdc-button}}
@@ -30,15 +30,19 @@ Yields
 <button id="ember400" disabled class="mdc-button ember-view">About</button>
 ```
 
-## Attributes
+### Attributes
 
 **accent** *{Boolean}* Use the accent color (default: `false`)
 
 **attributes** *{Object}* If you need to set any additional attributes on the a/button element, set them here. i.e. `{formenctype: "multipart/form-data"}` (default: `{}`)
 
-**class** *{String}* Adds extra classes to the a/button element (default: `null`)
+**class** *{String}* Sets the class attribute on the a/button element (default: `null`)
+
+**cardAction** *{Boolean}* Styles this button to be used as a card action (No need to call compact) (default: `false`)
 
 **compact** *{Boolean}* Use the compact styling (default: `false`)
+
+**dark** *{Boolean}* Use the dark theme (default: `false`)
 
 **dense** *{Boolean}* Use the dense styling (default: `false`)
 

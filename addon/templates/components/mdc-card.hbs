@@ -1,0 +1,17 @@
+{{#if isHorizontalContainer}}
+  {{yield}}
+{{else}}
+  {{#if primary}}
+  <section class="mdc-card__primary">
+    {{#if title}}<h1 class="mdc-card__title {{if largeTitle 'mdc-card__title--large'}}">{{title}}</h1>{{/if}}
+    {{#if subtitle}}<h2 class="mdc-card__subtitle">{{subtitle}}</h2>{{/if}}
+  </section>
+  {{/if}}
+  {{#if horizontal}}
+    {{#if mediaSrc}}<img class="mdc-card__media-item mdc-card__media-item--{{mediaSize}}x" src="{{mediaSrc}}">{{/if}}
+  {{else if hasMedia}}
+    <section class="mdc-card__media">{{yield yieldMedia}}</section>
+  {{/if}}
+  {{#if hasSupportingText}}<section class="mdc-card__supporting-text">{{yield yieldSupportingText}}</section>{{/if}}
+  {{#if hasActions}}<section class="mdc-card__actions {{if verticalActions 'mdc-card__actions--vertical'}}">{{yield yieldActions}}</section>{{/if}}
+{{/if}}

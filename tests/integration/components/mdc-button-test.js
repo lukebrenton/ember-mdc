@@ -24,6 +24,13 @@ test('it supports the attributes attribute', function(assert) {
   assert.equal(this.$('button').attr('formenctype'), 'multipart/form-data');
 });
 
+test('it supports the cardAction attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" cardAction=true}}Test{{/mdc-button}}`);
+
+  assert.equal(this.$('button').hasClass('mdc-card__action'), true);
+  assert.equal(this.$('button').hasClass('mdc-button--compact'), true);
+});
+
 test('it supports the class attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" class="test"}}Test{{/mdc-button}}`);
 
@@ -34,6 +41,12 @@ test('it supports the compact attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" compact=true}}Test{{/mdc-button}}`);
 
   assert.equal(this.$('button').hasClass('mdc-button--compact'), true);
+});
+
+test('it supports the dark attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" dark=true}}Test{{/mdc-button}}`);
+
+  assert.equal(this.$('button').hasClass('mdc-button--theme-dark'), true);
 });
 
 test('it supports the dense attribute', function(assert) {

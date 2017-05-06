@@ -13,6 +13,9 @@ export default Ember.Component.extend({
   cols: null,
 
   /** @var {Boolean} */
+  dark: false,
+
+  /** @var {Boolean} */
   dense: false,
 
   /** @var {Boolean} */

@@ -1,12 +1,14 @@
 # mdc-textfield
 
-## Global Attributes
+### Attributes
 
-**class** *{String}* Adds extra classes to the input/textarea element (default: `null`)
+**class** *{String}* Sets the class attribute on the input/textarea element (default: `null`)
+
+**dark** *{Boolean}* Use the dark theme (default `false`)
 
 **dense** *{Boolean}* Use the dense styling (default: `false`)
 
-**disabled** *{Boolean}* Sets the disabled attribute on input/textarea element (default: `false`)
+**disabled** *{Boolean}* Sets the disabled attribute on the input/textarea element (default: `false`)
 
 **fullwidth** *{Boolean}* Use the fullwidth textfield (default: `false`)
 

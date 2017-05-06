@@ -53,6 +53,26 @@ test('it supports the class attribute for multi-line textfields', function(asser
 <!---->`);
 });
 
+test('it supports the dark attribute for single-line textfields', function(assert) {
+  this.render(hbs`{{mdc-textfield id="test" dark=true}}`);
+
+  assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--theme-dark mdc-textfield--upgraded">
+    <input id="test-input" type="text" class="ember-text-field mdc-textfield__input ember-view">
+  <label for="test-input" class="mdc-textfield__label "></label>
+</div>
+<!---->`);
+});
+
+test('it supports the dark attribute for multi-line textfields', function(assert) {
+  this.render(hbs`{{mdc-textfield id="test" dark=true multiline=true}}`);
+
+  assert.equal(this.$().html(), `<div id="test" class="mdc-textfield mdc-textfield--theme-dark mdc-textfield--multiline mdc-textfield--upgraded">
+    <textarea id="test-input" class="ember-text-area mdc-textfield__input ember-view"></textarea>
+  <label for="test-input" class="mdc-textfield__label "></label>
+</div>
+<!---->`);
+});
+
 test('it supports the dense attribute for single-line textfields', function(assert) {
   this.render(hbs`{{mdc-textfield id="test" dense=true}}`);
 

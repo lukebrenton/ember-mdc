@@ -11,11 +11,17 @@ export default Ember.Component.extend({
   /** @var {Object} */
   attributes: {},
 
+  /** @var {Boolean} */
+  cardAction: false,
+
   /** @var {?String} */
   class: null,
 
   /** @var {Boolean} */
   compact: false,
+
+  /** @var {Boolean} */
+  dark: false,
 
   /** @var {Boolean} */
   dense: false,
@@ -67,8 +73,10 @@ export default Ember.Component.extend({
   /** @var {String[]} */
   classNameBindings: [
     'accent:mdc-button--accent',
+    'cardAction:mdc-card__action',
     'class',
     'compact:mdc-button--compact',
+    'dark:mdc-button--theme-dark',
     'dense:mdc-button--dense',
     'primary:mdc-button--primary',
     'raised:mdc-button--raised'
@@ -87,6 +95,10 @@ export default Ember.Component.extend({
   /** @var {Function} */
   init() {
     this._super(...arguments);
+
+    if (this.get('cardAction')) {
+      this.set('compact', true);
+    }
 
     if (this.get('href')) {
       this.set('form', null);
