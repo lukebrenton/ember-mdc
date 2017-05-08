@@ -2,7 +2,7 @@
 
 ### Attributes
 
-**class** *{String}* Sets the class attribute on the input/textarea element (default: `null`)
+**class** *{String}* Adds to the class attribute on the input/textarea element (default: `null`)
 
 **dark** *{Boolean}* Use the dark theme (default `false`)
 

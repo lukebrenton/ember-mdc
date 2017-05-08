@@ -36,7 +36,7 @@ Yields
 
 **attributes** *{Object}* If you need to set any additional attributes on the a/button element, set them here. i.e. `{formenctype: "multipart/form-data"}` (default: `{}`)
 
-**class** *{String}* Sets the class attribute on the a/button element (default: `null`)
+**class** *{String}* Adds to the class attribute on the a/button element (default: `null`)
 
 **cardAction** *{Boolean}* Styles this button to be used as a card action (No need to call compact) (default: `false`)
 

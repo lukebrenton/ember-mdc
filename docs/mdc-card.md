@@ -78,7 +78,7 @@ Yields
 
 ### Attributes
 
-**class** *{String}* Sets the class attribute (default: `null`)
+**class** *{String}* Adds to the class attribute (default: `null`)
 
 **dark** *{Boolean}* Use the dark theme (default: `false`)
 

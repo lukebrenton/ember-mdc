@@ -1,0 +1,20 @@
+<div id="{{id}}" class="mdc-checkbox {{class}} {{if dark 'mdc-checkbox--theme-dark'}} {{if disabled 'mdc-checkbox--disabled'}}">
+  {{mdc-checkbox/input
+    attributes=inputAttributes
+    checked=checked
+    disabled=disabled
+    form=form
+    id=id
+    name=name
+    onchange=(action 'on' 'change')
+    required=required
+    value=value
+  }}
+  <div class="mdc-checkbox__background">
+    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+      <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+    </svg>
+    <div class="mdc-checkbox__mixedmark"></div>
+  </div>
+</div>
+{{#if label}}<label id="{{id}}-label" for="{{id}}-checkbox">{{label}}</label>{{/if}}

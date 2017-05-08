@@ -1,6 +1,7 @@
 import Ember from 'ember';
-import layout from 'ember-mdc/templates/components/mdc-textfield';
-import { MDCTextfield, MDCTextfieldFoundation } from '@material/mdc-textfield';
+import layout from 'ember-mdc/templates/components/mdc-checkbox';
+import { MDCCheckbox, MDCCheckboxFoundation } from '@material/mdc-checkbox';
+import { getCorrectEventName } from '@material/mdc-animation';
 
 export default Ember.Component.extend({
   /**************
@@ -9,14 +10,11 @@ export default Ember.Component.extend({
   /** @var {?String} */
   class: null,
 
-  /** @var {?Number} */
-  cols: null,
+  /** @var {Boolean} */
+  checked: false,
 
   /** @var {Boolean} */
   dark: false,
-
-  /** @var {Boolean} */
-  dense: false,
 
   /** @var {Boolean} */
   disabled: false,
@@ -24,20 +22,11 @@ export default Ember.Component.extend({
   /** @var {?String} */
   form: null,
 
-  /** @var {Boolean} */
-  fullwidth: false,
-
-  /** @var {?String} */
-  helptext: null,
-
-  /** @var {Boolean} */
-  helptextPersistent: false,
-
-  /** @var {Boolean} */
-  helptextValidation: false,
-
   /** @var {?String} */
   id: null,
+
+  /** @var {Boolean} */
+  indeterminate: false,
 
   /** @var {Object} */
   inputAttributes: {},
@@ -45,20 +34,11 @@ export default Ember.Component.extend({
   /** @var {?String} */
   label: null,
 
-  /** @var {Boolean} */
-  multiline: false,
-
   /** @var {?String} */
   name: null,
 
   /** @var {Boolean} */
   required: false,
-
-  /** @var {?Number} */
-  rows: null,
-
-  /** @var {String} */
-  type: 'text',
 
   /** @var {?String} */
   value: null,
@@ -79,19 +59,28 @@ export default Ember.Component.extend({
   didInsertElement() {
     const id = this.get('id');
     const root = Ember.$(`#${id}`);
-    const input = root.find('input, textarea');
-    const label = input.next();
-    const helptext = Ember.$(`#${id}-helptext`);
+    const input = root.find('input');
 
     const elements = this.get('elements');
     elements.root = root;
     elements.input = input;
-    elements.label = label;
-    elements.helptext = helptext;
+
+    const animationend = getCorrectEventName('animationend');
+    this.set('animationend', animationend);
 
     const foundation = this.createFoundation();
-    const textfield = new MDCTextfield(root[0], foundation);
-    this.set('textfield', textfield);
+    const checkbox = new MDCCheckbox(root[0], foundation);
+    this.set('checkbox', checkbox);
+
+    root.on(animationend, (event) => {
+      this.get('eventHandlers')
+      .filter((handler) => handler.name == animationend)
+      .forEach((handler) => handler.fn(event));
+    });
+
+    if (this.get('indeterminate')) {
+      input[0].indeterminate = true;
+    }
   },
 
   /** @var {Function} */
@@ -120,6 +109,8 @@ export default Ember.Component.extend({
    * Creates the foundation for
    */
   createFoundation() {
+    const animationend = this.get('animationend');
+
     const elements = this.get('elements');
 
     const addClass = function(element, className) {
@@ -138,37 +129,31 @@ export default Ember.Component.extend({
       elements[element].removeClass(className);
     };
 
-    return new MDCTextfieldFoundation({
+    return new MDCCheckboxFoundation({
       addClass: addClass.bind(this, 'root'),
-      addClassToHelptext: addClass.bind(this, 'helptext'),
-      addClassToLabel: addClass.bind(this, 'label'),
-      deregisterInputBlurHandler: deregisterHandler.bind(this, 'blur'),
-      deregisterInputFocusHandler: deregisterHandler.bind(this, 'focus'),
-      deregisterInputInputHandler: deregisterHandler.bind(this, 'input'),
-      deregisterInputKeydownHandler: deregisterHandler.bind(this, 'keydown'),
+      deregisterAnimationEndHandler: deregisterHandler.bind(this, animationend),
+      deregisterChangeHandler: deregisterHandler.bind(this, 'change'),
+      forceLayout: () => elements.root[0].clientHeight,
       getNativeInput: () => elements.input[0],
-      helptextHasClass: (className) => elements.helptext.hasClass(className),
-      registerInputBlurHandler: registerHandler.bind(this, 'blur'),
-      registerInputFocusHandler: registerHandler.bind(this, 'focus'),
-      registerInputInputHandler: registerHandler.bind(this, 'input'),
-      registerInputKeydownHandler: registerHandler.bind(this, 'keydown'),
-      removeClass: removeClass.bind(this, 'root'),
-      removeClassFromHelptext: removeClass.bind(this, 'helptext'),
-      removeClassFromLabel: removeClass.bind(this, 'label'),
-      removeHelptextAttr: (name) => elements.helptext.removeAttr(name),
-      setHelptextAttr: (name, value) => elements.helptext.attr(name, value)
+      isAttachedToDOM: () => elements.root[0].parentNode !== undefined,
+      registerAnimationEndHandler: registerHandler.bind(this, animationend),
+      registerChangeHandler: registerHandler.bind(this, 'change'),
+      removeClass: removeClass.bind(this, 'root')
     });
   },
 
   /**************
    * Properties *
    **************/
+  /** @var {String} */
+  animationend: '',
+
+  /** @var {MDCCheckbox} */
+  checkbox: null,
+
   /** @var {Object} */
   elements: {},
 
   /** @var {Object[]} */
-  eventHandlers: [],
-
-  /** @var {MDCTextfield} */
-  textfield: null
+  eventHandlers: []
 });
