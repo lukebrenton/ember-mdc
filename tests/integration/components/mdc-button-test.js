@@ -55,6 +55,31 @@ test('it supports the dense attribute', function(assert) {
   assert.equal(this.$('button').hasClass('mdc-button--dense'), true);
 });
 
+test('it supports the dialog attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" dialog="test"}}Test{{/mdc-button}}`);
+
+  window.called = false;
+  window.emberMDC = {test: {show: () => window.called = true}};
+
+  this.$('button').click();
+
+  assert.equal(window.called, true);
+});
+
+test('it supports the dialogAccept attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" dialogAccept=true}}Test{{/mdc-button}}`);
+
+  assert.equal(this.$('button').hasClass('mdc-dialog__footer__button'), true);
+  assert.equal(this.$('button').hasClass('mdc-dialog__footer__button--accept'), true);
+});
+
+test('it supports the dialogCancel attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" dialogCancel=true}}Test{{/mdc-button}}`);
+
+  assert.equal(this.$('button').hasClass('mdc-dialog__footer__button'), true);
+  assert.equal(this.$('button').hasClass('mdc-dialog__footer__button--cancel'), true);
+});
+
 test('it supports the disabled attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" disabled=true}}Test{{/mdc-button}}`);
 

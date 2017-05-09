@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { MDCRipple } from '@material/mdc-ripple';
+import { emberMDC } from 'ember-mdc/util';
 
 export default Ember.Component.extend({
   /**************
@@ -25,6 +26,15 @@ export default Ember.Component.extend({
 
   /** @var {Boolean} */
   dense: false,
+
+  /** @var {?String} */
+  dialog: null,
+
+  /** @var {Boolean} */
+  dialogAccept: false,
+
+  /** @var {Boolean} */
+  dialogCancel: false,
 
   /** @var {Boolean} */
   disabled: false,
@@ -61,7 +71,7 @@ export default Ember.Component.extend({
    ***************/
   /** @var {String[]} */
   attributeBindings: [
-    'disabled', 'form', 'href', 'id', 'name', 'type', 'value',
+    'disabled', 'form', 'href', 'id', 'name', 'tabindex', 'type', 'value',
 
     // extra attributes for button elements
     'autofocus', 'autocomplete', 'formaction', 'formenctype', 'formmethod', 'formnovalidate', 'formtarget',
@@ -78,6 +88,9 @@ export default Ember.Component.extend({
     'compact:mdc-button--compact',
     'dark:mdc-button--theme-dark',
     'dense:mdc-button--dense',
+    'dialogAccept:mdc-dialog__footer__button--accept',
+    'dialogButton:mdc-dialog__footer__button',
+    'dialogCancel:mdc-dialog__footer__button--cancel',
     'primary:mdc-button--primary',
     'raised:mdc-button--raised'
   ],
@@ -87,6 +100,11 @@ export default Ember.Component.extend({
 
   /** @var {Function} */
   didInsertElement() {
+    const dialog = this.get('dialog');
+    if (dialog) {
+      this.$().on('click', () => emberMDC.get(dialog).show());
+    }
+
     if (this.get('ripple')) {
       MDCRipple.attachTo(this.$()[0]);
     }
@@ -98,6 +116,10 @@ export default Ember.Component.extend({
 
     if (this.get('cardAction')) {
       this.set('compact', true);
+    }
+
+    if (this.get('dialogAccept') || this.get('dialogCancel')) {
+      this.set('dialogButton', true);
     }
 
     if (this.get('href')) {
@@ -119,5 +141,11 @@ export default Ember.Component.extend({
   },
 
   /** @var {String} */
-  tagName: 'button'
+  tagName: 'button',
+
+  /**************
+   * Properties *
+   **************/
+  /** @var {Boolean} */
+  dialogButton: false
 });

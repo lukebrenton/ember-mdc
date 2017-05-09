@@ -13,23 +13,11 @@ export default Ember.TextArea.extend({
   /** @var {String} */
   helptext: '',
 
-  /** @var {Function} */
-  onblur: (e) => e,
-
-  /** @var {Function} */
-  onfocus: (e) => e,
-
-  /** @var {Function} */
-  oninput: (e) => e,
-
-  /** @var {Function} */
-  onkeydown: (e) => e,
-
   /***************
    * Ember Hooks *
    ***************/
   /** @var {String[]} */
-  attributeBindings: ['aria-controls', 'form', 'id', 'onblur', 'onfocus', 'oninput', 'onkeydown'],
+  attributeBindings: ['aria-controls', 'form', 'id'],
 
   /** @var {String[]} */
   classNames: ['mdc-textfield__input'],

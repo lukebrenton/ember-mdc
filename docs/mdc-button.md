@@ -38,13 +38,19 @@ Yields
 
 **class** *{String}* Adds to the class attribute on the a/button element (default: `null`)
 
-**cardAction** *{Boolean}* Styles this button to be used as a card action (No need to call compact) (default: `false`)
+**cardAction** *{Boolean}* Styles this button to be used as a card action. (Will also use compact styling) (default: `false`)
 
 **compact** *{Boolean}* Use the compact styling (default: `false`)
 
 **dark** *{Boolean}* Use the dark theme (default: `false`)
 
 **dense** *{Boolean}* Use the dense styling (default: `false`)
+
+**dialog** *{String}* Open the corresponding dialog when this button is clicked. (Links to `mdc-dialog` `name` attribute) (default: `null`)
+
+**dialogAccept** *{Boolean}* Styles this button to be used as a dialog accept button. (Will also add ripples) (default: `false`)
+
+**dialogCancel** *{Boolean}* Styles this button to be used as a dialog cancel button. (Will also add ripples) (default: `false`)
 
 **disabled** *{Boolean}* Sets the disabled attribute on the button element. (This *can* be used to disable links) (default: `false`)
 

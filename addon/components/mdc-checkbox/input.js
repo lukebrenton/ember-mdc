@@ -7,14 +7,11 @@ export default Ember.Checkbox.extend({
   /** @var {Object} */
   attributes: {},
 
-  /** @var {Function} */
-  onchange: (e) => e,
-
   /***************
    * Ember Hooks *
    ***************/
   /** @var {String[]} */
-  attributeBindings: ['id', 'onchange', 'value'],
+  attributeBindings: ['id', 'value'],
 
   /** @var {String[]} */
   classNames: ['mdc-checkbox__native-control'],

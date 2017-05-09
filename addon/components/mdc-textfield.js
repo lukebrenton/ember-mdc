@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-textfield';
-import { MDCTextfield, MDCTextfieldFoundation } from '@material/mdc-textfield';
+import { MDCTextfield } from '@material/mdc-textfield';
 
 export default Ember.Component.extend({
   /**************
@@ -66,40 +66,18 @@ export default Ember.Component.extend({
   /***************
    * Ember Hooks *
    ***************/
-  /** @var {Object} */
-  actions: {
-    on(name, event) {
-      this.get('eventHandlers')
-      .filter((handler) => handler.name == name)
-      .forEach((handler) => handler.fn(event));
-    }
-  },
-
   /** @var {Function} */
   didInsertElement() {
     const id = this.get('id');
-    const root = Ember.$(`#${id}`);
-    const input = root.find('input, textarea');
-    const label = input.next();
-    const helptext = Ember.$(`#${id}-helptext`);
+    const root = window.document.getElementById(id);
 
-    const elements = this.get('elements');
-    elements.root = root;
-    elements.input = input;
-    elements.label = label;
-    elements.helptext = helptext;
-
-    const foundation = this.createFoundation();
-    const textfield = new MDCTextfield(root[0], foundation);
+    const textfield = new MDCTextfield(root);
     this.set('textfield', textfield);
   },
 
   /** @var {Function} */
   init() {
     this._super(...arguments);
-
-    this.set('elements', {});
-    this.set('eventHandlers', new Ember.A());
 
     const id = this.get('id');
     if (!id) {
@@ -113,62 +91,9 @@ export default Ember.Component.extend({
   /** @var {String} */
   tagName: '',
 
-  /***********
-   * Methods *
-   ***********/
-  /**
-   * Creates the foundation for
-   */
-  createFoundation() {
-    const elements = this.get('elements');
-
-    const addClass = function(element, className) {
-      elements[element].addClass(className);
-    };
-
-    const deregisterHandler = function(name, fn) {
-      this.get('eventHandlers').removeObject({fn: fn, name: name});
-    };
-
-    const registerHandler = function(name, fn) {
-      this.get('eventHandlers').addObject({fn: fn, name: name});
-    };
-
-    const removeClass = function(element, className) {
-      elements[element].removeClass(className);
-    };
-
-    return new MDCTextfieldFoundation({
-      addClass: addClass.bind(this, 'root'),
-      addClassToHelptext: addClass.bind(this, 'helptext'),
-      addClassToLabel: addClass.bind(this, 'label'),
-      deregisterInputBlurHandler: deregisterHandler.bind(this, 'blur'),
-      deregisterInputFocusHandler: deregisterHandler.bind(this, 'focus'),
-      deregisterInputInputHandler: deregisterHandler.bind(this, 'input'),
-      deregisterInputKeydownHandler: deregisterHandler.bind(this, 'keydown'),
-      getNativeInput: () => elements.input[0],
-      helptextHasClass: (className) => elements.helptext.hasClass(className),
-      registerInputBlurHandler: registerHandler.bind(this, 'blur'),
-      registerInputFocusHandler: registerHandler.bind(this, 'focus'),
-      registerInputInputHandler: registerHandler.bind(this, 'input'),
-      registerInputKeydownHandler: registerHandler.bind(this, 'keydown'),
-      removeClass: removeClass.bind(this, 'root'),
-      removeClassFromHelptext: removeClass.bind(this, 'helptext'),
-      removeClassFromLabel: removeClass.bind(this, 'label'),
-      removeHelptextAttr: (name) => elements.helptext.removeAttr(name),
-      setHelptextAttr: (name, value) => elements.helptext.attr(name, value)
-    });
-  },
-
   /**************
    * Properties *
    **************/
-  /** @var {Object} */
-  elements: {},
-
-  /** @var {Object[]} */
-  eventHandlers: [],
-
   /** @var {MDCTextfield} */
   textfield: null
 });
