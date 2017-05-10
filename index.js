@@ -24,7 +24,7 @@ var materialPackages = [
   { css: true, js: true, name: 'menu', path: 'menu' },
   { css: true, js: true, name: 'radio', path: 'radio' },
   { css: true, js: true, name: 'ripple', path: 'ripple' },
-  // { css: false, js: false, name: 'rtl', path: 'rtl' },
+  { css: false, js: false, name: 'rtl', path: 'rtl' },
   { css: true, js: true, name: 'select', path: 'select' },
   { css: true, js: true, name: 'snackbar', path: 'snackbar' },
   { css: true, js: false, name: 'switch', path: 'switch' },
@@ -37,6 +37,12 @@ var materialPackages = [
 module.exports = {
   name: 'ember-mdc',
 
+  contentFor: function(type) {
+    if (type == 'head') {
+      return '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+    }
+  },
+
   /**
    * Invoked at the beginning of the build process, this hook allows us to
    * use the `import()` method to include files from our `vendor` tree into
@@ -48,10 +54,15 @@ module.exports = {
         app.import(`vendor/@material/${pkg.path}/dist/mdc.${pkg.path}.min.css`);
         app.import(`vendor/@material/${pkg.path}/mdc-${pkg.path}.scss`);
       }
+
       if (pkg.js) {
         app.import(`vendor/@material/${pkg.path}/dist/mdc.${pkg.name}.min.js`, {
           using: [{ as: `@material/mdc-${pkg.path}`, transformation: 'amd' }]
         });
+      }
+
+      if (pkg.name == 'rtl') {
+        app.import(`vendor/@material/${pkg.path}/_mixins.scss`);
       }
     });
   },
@@ -71,8 +82,13 @@ module.exports = {
         include.push(`dist/mdc.${pkg.path}.min.css`);
         include.push(`*.scss`);
       }
+
       if (pkg.js) {
         include.push(`dist/mdc.${pkg.name}.min.js`);
+      }
+
+      if (pkg.name == 'rtl') {
+        include.push('_mixins.scss');
       }
 
       return new Funnel(`node_modules/@material/${pkg.path}`, {

@@ -1,0 +1,26 @@
+{{#if isGroupContainer}}
+  {{yield}}
+{{else}}
+  {{#each items as |item|}}
+    {{#if item.divider}}
+      {{yield item yieldDivider}}
+    {{else}}
+      <li class="mdc-list-item">
+        {{#if hasStartDetail}}
+          <span class="mdc-list-item__start-detail" role="presentation">{{yield item yieldStartDetail}}</span>
+        {{/if}}
+        {{#if twoLines}}
+          <span class="mdc-list-item__text">
+            {{yield item yieldPrimary}}
+            <span class="mdc-list-item__text__secondary">{{yield item yieldSecondary}}</span>
+          </span>
+        {{else}}
+          {{yield item yieldPrimary}}
+        {{/if}}
+        {{#if hasEndDetail}}
+          <span class="mdc-list-item__end-detail">{{yield item yieldEndDetail}}</span>
+        {{/if}}
+      </li>
+    {{/if}}
+  {{/each}}
+{{/if}}
