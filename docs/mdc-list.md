@@ -78,7 +78,7 @@ Lists can also be separated into groups. This can be accomplished with the follo
 Yields
 
 ```html
-<ul id="ember352" class="mdc-list-group ember-view">
+<div id="ember352" class="mdc-list-group ember-view">
   <h3 class="mdc-list-group__subheader">Surgebinders</h3>
   <ul id="ember354" class="mdc-list--dense mdc-list
   mdc-list--two-line ember-view">
@@ -105,7 +105,7 @@ Yields
     <li class="mdc-list-item">Kaladin Stormblessed</li>
     <li class="mdc-list-item">Shallan Davar</li>
   </ul>
-</ul>
+</div>
 ```
 
 ### Dividers

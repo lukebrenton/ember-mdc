@@ -30,6 +30,18 @@ export default Ember.Component.extend({
   items: null,
 
   /** @var {Boolean} */
+  nav: false,
+
+  /** @var {Boolean} */
+  permanentDrawer: false,
+
+  /** @var {Boolean} */
+  persistentDrawer: false,
+
+  /** @var {Boolean} */
+  temporaryDrawer: false,
+
+  /** @var {Boolean} */
   twoLines: false,
 
   /***************
@@ -43,6 +55,8 @@ export default Ember.Component.extend({
     'avatars:mdc-list--avatar-list',
     'dense:mdc-list--dense',
     'isGroupContainer:mdc-list-group:mdc-list',
+    'persistentDrawer:mdc-persistent-drawer__content',
+    'temporaryDrawer:mdc-temporary-drawer__content',
     'twoLines:mdc-list--two-line'
   ],
 
@@ -72,6 +86,19 @@ export default Ember.Component.extend({
 
     if (this.get('avatars')) {
       this.set('hasStartDetail', true);
+    }
+
+    if (this.get('permanentDrawer') || this.get('persistentDrawer') || this.get('temporaryDrawer')) {
+      this.set('hasStartDetail', true);
+      this.set('nav', true);
+    }
+
+    if (this.get('nav')) {
+      this.set('tagName', 'nav');
+    }
+
+    if (this.get('isGroupContainer')) {
+      this.set('tagName', 'div');
     }
   },
 

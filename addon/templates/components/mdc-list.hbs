@@ -5,7 +5,14 @@
     {{#if item.divider}}
       {{yield item yieldDivider}}
     {{else}}
-      <li class="mdc-list-item">
+      {{#mdc-list/item
+        href=item.href
+        nav=nav
+        permanentDrawer=permanentDrawer
+        persistentDrawer=persistentDrawer
+        selected=item.selected
+        temporaryDrawer=temporaryDrawer
+      }}
         {{#if hasStartDetail}}
           <span class="mdc-list-item__start-detail" role="presentation">{{yield item yieldStartDetail}}</span>
         {{/if}}
@@ -20,7 +27,7 @@
         {{#if hasEndDetail}}
           <span class="mdc-list-item__end-detail">{{yield item yieldEndDetail}}</span>
         {{/if}}
-      </li>
+      {{/mdc-list/item}}
     {{/if}}
   {{/each}}
 {{/if}}

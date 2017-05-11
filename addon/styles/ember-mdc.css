@@ -3,7 +3,7 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
-.material-icons:not(.mdc-theme--primary):not(.mdc-theme--accent) {
+:not(.mdc-list-item.selected) .material-icons:not(.mdc-theme--primary):not(.mdc-theme--accent) {
   color: rgba(0, 0, 0, 0.54);
   color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
 }
@@ -12,7 +12,7 @@
   color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.26)) !important;
 }
 
-.material-icons.md-dark:not(.mdc-theme--primary):not(.mdc-theme--accent) {
+:not(.mdc-list-item.selected) .material-icons.md-dark:not(.mdc-theme--primary):not(.mdc-theme--accent) {
   color: rgba(255, 255, 255, 1);
   color: var(--mdc-theme-text-primary-on-dark, rgba(255, 255, 255, 1));
 }

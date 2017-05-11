@@ -6,7 +6,8 @@ moduleForComponent('mdc-list', 'Integration | Component | mdc-list', {
 });
 
 test('it supports the ID attribute', function(assert) {
-  this.render(hbs`{{#mdc-list id="test"}}{{/mdc-list}}`);
+  this.set('items', [{}, {}, {}]);
+  this.render(hbs`{{#mdc-list id="test" items=items}}{{/mdc-list}}`);
 
   assert.equal(this.$('ul').attr('id'), 'test');
 });
@@ -59,6 +60,15 @@ test('it supports the hasStartDetail attribute', function(assert) {
   this.render(hbs`{{#mdc-list items=items hasStartDetail=true}}{{/mdc-list}}`);
 
   assert.ok(this.$('ul .mdc-list-item__start-detail')[0]);
+});
+
+test('it supports the nav attribute', function(assert) {
+  this.set('items', [{href: '/test'}, {selected: true}, {}]);
+  this.render(hbs`{{#mdc-list items=items nav=true}}{{/mdc-list}}`);
+
+  assert.equal(this.$('nav a').length, 3);
+  assert.equal(this.$('nav a:nth-child(1)').attr('href'), '/test');
+  assert.equal(this.$('nav a:nth-child(2)').hasClass('selected'), true);
 });
 
 test('it supports the twoLines attribute', function(assert) {
