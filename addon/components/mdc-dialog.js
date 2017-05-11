@@ -35,7 +35,7 @@ export default Ember.Component.extend({
   attributeBindings: ['aria-describedby', 'aria-hidden', 'aria-labelledby', 'id', 'role', 'style'],
 
   /** @var {String[]} */
-  classNameBindings: ['class', 'dark:mdc-dialog--theme-dark'],
+  classNameBindings: ['dark:mdc-dialog--theme-dark'],
 
   /** @var {String[]} */
   classNames: ['mdc-dialog'],

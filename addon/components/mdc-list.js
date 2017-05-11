@@ -41,7 +41,6 @@ export default Ember.Component.extend({
   /** @var {String[]} */
   classNameBindings: [
     'avatars:mdc-list--avatar-list',
-    'class',
     'dense:mdc-list--dense',
     'isGroupContainer:mdc-list-group:mdc-list',
     'twoLines:mdc-list--two-line'

@@ -52,7 +52,6 @@ export default Ember.Component.extend({
 
   /** @var {String[]} */
   classNameBindings: [
-    'class',
     'dark:mdc-card--theme-dark',
     'horizontal:mdc-card__horizontal-block:mdc-card'
   ],

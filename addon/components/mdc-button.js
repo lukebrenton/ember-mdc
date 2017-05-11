@@ -84,7 +84,6 @@ export default Ember.Component.extend({
   classNameBindings: [
     'accent:mdc-button--accent',
     'cardAction:mdc-card__action',
-    'class',
     'compact:mdc-button--compact',
     'dark:mdc-button--theme-dark',
     'dense:mdc-button--dense',

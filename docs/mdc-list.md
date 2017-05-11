@@ -24,7 +24,7 @@ so it yields both the item and the block. Here is another example:
 ```hbs
 {{#mdc-list items=model hasStartDetail=true as |item block|}}
   {{#if block.startDetail}}
-    {{#mdc-icon}}{{item.icon}}{{/mdc-icon}}
+    {{mdc-icon content=item.icon}}
   {{else if block.primary}}
     {{item.name}}
   {{else if block.divider}}
