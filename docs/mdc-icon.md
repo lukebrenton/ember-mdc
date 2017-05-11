@@ -59,6 +59,12 @@ Yields
 
 ### Attributes
 
+**button** *{Boolean}* Use the icon as a button (default: `false`)
+
+**dialog** *{String}* Open the corresponding dialog when this icon is clicked. (Links to `mdc-dialog` `name` attribute) (default: `null`)
+
+**drawer** *{String}* Open the corresponding drawer when this icon is clicked. (Links to `mdc-drawer` `name` attribute) (default: `null`)
+
 **inactive** *{Boolean}* Use the inactive style (default: `false`)
 
 **label** *{String}* The label to use for screen readers (default: `null`)

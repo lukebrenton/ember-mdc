@@ -40,6 +40,9 @@ export default Ember.Component.extend({
   disabled: false,
 
   /** @var {?String} */
+  drawer: null,
+
+  /** @var {?String} */
   form: null,
 
   /** @var {?String} */
@@ -102,6 +105,11 @@ export default Ember.Component.extend({
     const dialog = this.get('dialog');
     if (dialog) {
       this.$().on('click', () => emberMDC.get(dialog).show());
+    }
+
+    const drawer = this.get('drawer');
+    if (drawer) {
+      this.$().on('click', () => emberMDC.get(drawer).open = true);
     }
 
     if (this.get('ripple')) {

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-icon';
 import { MDCIconToggle } from '@material/mdc-icon-toggle';
+import { emberMDC } from 'ember-mdc/util';
 
 export default Ember.Component.extend({
   /**************
@@ -8,6 +9,9 @@ export default Ember.Component.extend({
    **************/
   /** @var {Boolean} */
   accent: false,
+
+  /** @var {Boolean} */
+  button: false,
 
   /** @var {?String} */
   class: null,
@@ -18,8 +22,14 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   dark: false,
 
+  /** @var {?String} */
+  dialog: null,
+
   /** @var {Boolean} */
   disabled: false,
+
+  /** @var {?String} */
+  drawer: null,
 
   /** @var {?String} */
   iconInnerSelector: null,
@@ -76,6 +86,7 @@ export default Ember.Component.extend({
   /** @var {String[]} */
   classNameBindings: [
     'accent:mdc-theme--accent',
+    'button:md-button',
     'dark:md-dark',
     'disabled:mdc-icon-toggle--disabled',
     'inactive:md-inactive',
@@ -97,6 +108,21 @@ export default Ember.Component.extend({
 
       const toggle = new MDCIconToggle(root);
       this.set('iconToggle', toggle);
+    } else {
+      const dialog = this.get('dialog');
+      if (dialog) {
+        this.set('button', true);
+        this.$().on('click', () => emberMDC.get(dialog).show());
+      }
+
+      const drawer = this.get('drawer');
+      if (drawer) {
+        this.set('button', true);
+        this.$().on('click', () => {
+          const _drawer = emberMDC.get(drawer);
+          _drawer.open = !_drawer.open;
+        });
+      }
     }
   },
 

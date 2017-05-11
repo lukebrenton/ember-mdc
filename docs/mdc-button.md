@@ -54,6 +54,8 @@ Yields
 
 **disabled** *{Boolean}* Sets the disabled attribute on the button element. (This *can* be used to disable links) (default: `false`)
 
+**drawer** *{String}* Open the corresponding drawer when this button is clicked. (Links to `mdc-drawer` `name` attribute) (default: `null`)
+
 **form** *{String}* Sets the form attribute on the button element (default: `null`)
 
 **href** *{String}* Sets the href attribute on the a element (default: `false`)

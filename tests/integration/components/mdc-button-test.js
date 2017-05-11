@@ -92,6 +92,16 @@ test('it supports disabling links', function(assert) {
   assert.equal(this.$('button')[0].hasAttribute('disabled'), true);
 });
 
+test('it supports the drawer attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" drawer="test"}}Test{{/mdc-button}}`);
+
+  window.emberMDC = {test: {open: false}};
+
+  this.$('button').click();
+
+  assert.equal(window.emberMDC.test.open, true);
+});
+
 test('it supports the form attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" form="test"}}Test{{/mdc-button}}`);
 

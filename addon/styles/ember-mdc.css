@@ -3,6 +3,10 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 
+.material-icons.md-button {
+  cursor: pointer;
+}
+
 :not(.mdc-list-item.selected) .material-icons:not(.mdc-theme--primary):not(.mdc-theme--accent) {
   color: rgba(0, 0, 0, 0.54);
   color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));

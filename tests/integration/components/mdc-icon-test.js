@@ -41,6 +41,27 @@ test('it supports the dark attribute', function(assert) {
   assert.equal(this.$('i').hasClass('md-dark'), true);
 });
 
+test('it supports the dialog attribute', function(assert) {
+  this.render(hbs`{{mdc-icon dialog="test" content="menu"}}`);
+
+  window.called = false;
+  window.emberMDC = {test: {show: () => window.called = true}};
+
+  this.$('i').click();
+
+  assert.equal(window.called, true);
+});
+
+test('it supports the drawer attribute', function(assert) {
+  this.render(hbs`{{mdc-icon drawer="test" content="menu"}}`);
+
+  window.emberMDC = {test: {open: false}};
+
+  this.$('i').click();
+
+  assert.equal(window.emberMDC.test.open, true);
+});
+
 test('it supports the primary attribute', function(assert) {
   this.render(hbs`{{mdc-icon content="favorite" primary=true}}`);
 
