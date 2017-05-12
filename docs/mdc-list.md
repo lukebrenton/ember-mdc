@@ -114,7 +114,11 @@ If you want a divider, you need to pass an object in that has the `divider` prop
 For example:
 
 ```js
-let items = [{name: 'Kaladin Stormblessed'}, {divider: true}, {name: 'Shallan Davar'}];
+const items = [
+  {name: 'Kaladin Stormblessed'},
+  {divider: true},
+  {name: 'Shallan Davar'}
+];
 ```
 
 When the `mdc-list` component iterates over that item, it will yield the divider block for you to use.
@@ -202,6 +206,66 @@ The `mdc-list/avatar` component has 4 attributes:
 
 **width** *{Number}* Sets the width attribute (default: `40`)
 
+### Navs / Drawers
+
+Instead of generating `ul` and `li` elements, you can have the `mdc-list` component
+generate `nav` and `a` elements by setting the `nav` attribute to `true`.
+
+In order to use a list inside of an `mdc-drawer` component, there are 3 attributes
+that you need to be aware of: `permanentDrawer`, `persistentDrawer`, and `temporaryDrawer`.
+Whichever kind of drawer you're using, set the corresponding attribue to `true`.
+If you set one of these attributes to `true`, you do not need to set `nav`.
+Each of these attributes will also set `hasStartDetail` to `true` so you can skip
+that one as well.
+
+When using a nav list, when you pass items into the `mdc-list` component, you can control
+the which item is selected along with the `href` attributes on the `a` elements. To have
+an item be selected, make sure on the item the `selected` property is set to `true`.
+To set the `href` attribute, just set the `href` property on the item to whatever you
+want it to be. For example:
+
+```js
+const items = [
+  {selected: true, href: '/inbox', name: 'Inbox', icon: 'inbox'},
+  {href: '/starred', name: 'Starred', icon: 'star'}
+];
+```
+
+```hbs
+{{#mdc-list nav=true hasStartDetail=true items=model as |item block|}}
+  {{#if block.startDetail}}
+    {{mdc-icon content=item.icon}}
+  {{else if block.primary}}
+    {{item.name}}
+  {{/if}}
+{{/mdc-list}}
+```
+
+Yields
+
+```html
+<nav id="ember369" class="mdc-list ember-view">
+  <a href="/inbox" id="ember370" class="mdc-list-item selected ember-view">
+    <span role="presentation" class="mdc-list-item__start-detail">
+      <i id="ember372" aria-hidden="true"
+      class="material-icons md-24 ember-view">
+        inbox
+      </i>
+    </span>
+    Inbox
+  </a>
+  <a href="/starred" id="ember373" class="mdc-list-item ember-view">
+    <span role="presentation" class="mdc-list-item__start-detail">
+      <i id="ember375" aria-hidden="true"
+      class="material-icons md-24 ember-view">
+        star
+      </i>
+    </span>
+    Starred
+  </a>
+</nav>
+```
+
 ### Attributes
 
 **avatars** *{Boolean}* Use an avatar list. (Yields `block.startDetail`) (default: `false`)
@@ -219,5 +283,13 @@ The `mdc-list/avatar` component has 4 attributes:
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
 
 **items** *{Object[]}* The items to iterate over (default: `null`)
+
+**nav** *{Boolean}* Use a nav list (default: `false`)
+
+**permanentDrawer** *{Boolean}* Use styling for permanent drawer (default: `false`)
+
+**persistentDrawer** *{Boolean}* Use styling for persistent drawer (default: `false`)
+
+**temporaryDrawer** *{Boolean}* Use styling for temporary drawer (default: `false`)
 
 **twoLines** *{Boolean}* Use the two line style (default: `false`)

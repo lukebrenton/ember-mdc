@@ -57,16 +57,17 @@ get a reference to the `MDCDialog` instance from off the root element.
 
 ### Showing Dialogs
 
-If you specify a `name` for the dialog, you can make a `mdc-button` open
-the dialog when it is clicked by setting the `dialog` to match the `name`.
-For example:
+If you specify a `name` for the dialog, you can make a `mdc-button`
+or `mdc-icon` open the dialog when it is clicked by setting the
+`dialog` to match the `name`. For example:
 
 ```hbs
 {{#mdc-dialog name="locationDialog"}}...{{/mdc-dialog}}
 {{#mdc-button dialog="locationDialog"}}Show Dialog{{/mdc-button}}
+{{mdc-icon dialog="locationDialog" content="menu"}}
 ```
 
-When that button is clicked, the locationDialog will show.
+When the button or icon is clicked, the locationDialog will show.
 
 Or by using JavaScript:
 

@@ -1,0 +1,12 @@
+{{#if hasHeader}}
+  <header class="mdc-{{type}}-drawer__header">
+    <div class="mdc-{{type}}-drawer__header-content">{{yield yieldHeader}}</div>
+  </header>
+{{else if hasSpacer}}
+  <div class="mdc-{{type}}-drawer__toolbar-spacer">{{yield yieldSpacer}}</div>
+{{/if}}
+{{#if permanent}}
+  <div class="mdc-permanent-drawer__content">{{yield yieldContent}}</div>
+{{else}}
+  {{yield yieldContent}}
+{{/if}}
