@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-drawer';
-import { MDCPersistentDrawer, MDCTemporaryDrawer } from '@material/mdc-drawer';
+import { MDCPersistentDrawer, MDCTemporaryDrawer } from '@material/drawer';
 import { emberMDC } from 'ember-mdc/util';
 
 export default Ember.Component.extend({

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { MDCDialog } from '@material/mdc-dialog';
+import { MDCDialog } from '@material/dialog';
 import layout from 'ember-mdc/templates/components/mdc-dialog';
 import { emberMDC } from 'ember-mdc/util';
 

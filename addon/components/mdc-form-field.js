@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { MDCFormField } from '@material/mdc-form-field';
+import { MDCFormField } from '@material/form-field';
 
 export default Ember.Component.extend({
   /**************

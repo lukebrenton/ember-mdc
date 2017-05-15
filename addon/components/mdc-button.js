@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { MDCRipple } from '@material/mdc-ripple';
+import { MDCRipple } from '@material/ripple';
 import { emberMDC } from 'ember-mdc/util';
 
 export default Ember.Component.extend({

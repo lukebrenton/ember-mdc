@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-icon';
-import { MDCIconToggle } from '@material/mdc-icon-toggle';
+import { MDCIconToggle } from '@material/icon-toggle';
 import { emberMDC } from 'ember-mdc/util';
 
 export default Ember.Component.extend({

@@ -19,7 +19,7 @@ Documentation on usage for the individual components is found in /docs.
 If you need access to the JS provided by material-components-web, you can access it as described in their documentation.
 
 ```js
-import { MDCTextfield, MDCTextfieldFoundation } from '@material/mdc-textfield';
+import { MDCTextfield, MDCTextfieldFoundation } from '@material/textfield';
 ```
 
 ## Including SASS

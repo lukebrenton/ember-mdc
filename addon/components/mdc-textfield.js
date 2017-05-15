@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-textfield';
-import { MDCTextfield } from '@material/mdc-textfield';
+import { MDCTextfield } from '@material/textfield';
 
 export default Ember.Component.extend({
   /**************

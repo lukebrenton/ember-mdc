@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-checkbox';
-import { MDCCheckbox } from '@material/mdc-checkbox';
+import { MDCCheckbox } from '@material/checkbox';
 
 export default Ember.Component.extend({
   /**************
