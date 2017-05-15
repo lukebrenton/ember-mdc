@@ -28,6 +28,7 @@ var materialPackages = [
   { css: true, js: true, name: 'select', path: 'select' },
   { css: true, js: true, name: 'snackbar', path: 'snackbar' },
   { css: true, js: false, name: 'switch', path: 'switch' },
+  { css: true, js: true, name: 'tabs', path: 'tabs' },
   { css: true, js: true, name: 'textfield', path: 'textfield' },
   { css: true, js: false, name: 'theme', path: 'theme' },
   { css: true, js: false, name: 'toolbar', path: 'toolbar' },
