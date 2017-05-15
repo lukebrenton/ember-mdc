@@ -52,7 +52,8 @@ export default Ember.Component.extend({
     const input = root.querySelector('input');
 
     const checkbox = new MDCCheckbox(root);
-    this.set('checkbox', checkbox);
+    this.set('mdcInstance', checkbox);
+    root.mdcInstance = checkbox;
 
     if (this.get('indeterminate')) {
       input.indeterminate = true;
@@ -79,5 +80,5 @@ export default Ember.Component.extend({
    * Properties *
    **************/
   /** @var {MDCCheckbox} */
-  checkbox: null
+  mdcInstance: null
 });

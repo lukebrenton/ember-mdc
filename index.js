@@ -16,7 +16,7 @@ var materialPackages = [
   { css: true, js: true, name: 'drawer', path: 'drawer' },
   { css: true, js: false, name: 'elevation', path: 'elevation' },
   { css: true, js: false, name: 'fab', path: 'fab' },
-  { css: true, js: false, name: 'formField', path: 'form-field' },
+  { css: true, js: true, name: 'formField', path: 'form-field' },
   { css: true, js: true, name: 'gridList', path: 'grid-list' },
   { css: true, js: true, name: 'iconToggle', path: 'icon-toggle' },
   { css: true, js: false, name: 'layoutGrid', path: 'layout-grid' },
@@ -36,12 +36,6 @@ var materialPackages = [
 
 module.exports = {
   name: 'ember-mdc',
-
-  contentFor: function(type) {
-    if (type == 'head') {
-      return '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-    }
-  },
 
   /**
    * Invoked at the beginning of the build process, this hook allows us to

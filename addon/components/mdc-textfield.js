@@ -72,7 +72,8 @@ export default Ember.Component.extend({
     const root = window.document.getElementById(id);
 
     const textfield = new MDCTextfield(root);
-    this.set('textfield', textfield);
+    this.set('mdcInstance', textfield);
+    root.mdcInstance = textfield;
   },
 
   /** @var {Function} */
@@ -95,5 +96,5 @@ export default Ember.Component.extend({
    * Properties *
    **************/
   /** @var {MDCTextfield} */
-  textfield: null
+  mdcInstance: null
 });

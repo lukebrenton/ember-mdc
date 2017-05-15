@@ -73,7 +73,7 @@ Or by using JavaScript:
 
 ```js
 let dialog = window.emberMDC.locationDialog;
-// let dialog = document.querySelector('aside').dialog;
+// let dialog = document.querySelector('aside').mdcInstance;
 
 document.querySelector('button').addEventListener('click', function() {
   dialog.show();
@@ -86,7 +86,7 @@ Listening for actions is done the same as material-components-web.
 
 ```js
 // let dialog = window.emberMDC.locationDialog;
-let dialog = document.querySelector('aside').dialog;
+let dialog = document.querySelector('aside').mdcInstance;
 
 dialog.listen('MDCDialog:accept', function() {
   console.log('accepted');

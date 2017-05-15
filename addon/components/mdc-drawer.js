@@ -68,8 +68,8 @@ export default Ember.Component.extend({
         emberMDC.set(name, drawer);
       }
 
-      root[0].drawer = drawer;
-      this.set('drawer', drawer);
+      root[0].mdcInstance = drawer;
+      this.set('mdcInstance', drawer);
     }
   },
 
@@ -97,7 +97,7 @@ export default Ember.Component.extend({
    * Properties *
    **************/
   /** @var {MDCSliderDrawer} */
-  drawer: null,
+  mdcInstance: null,
 
   /** @var {Boolean} */
   slider: Ember.computed('{persistent,temporary}', function() {

@@ -84,7 +84,7 @@ Or by using JavaScript:
 
 ```js
 let drawer = window.emberMDC.drawer;
-// let drawer = document.querySelector('aside').drawer;
+// let drawer = document.querySelector('aside').mdcInstance;
 
 document.querySelector('button').addEventListener('click', function() {
   drawer.open = true;
@@ -101,7 +101,7 @@ document.querySelector('button').addEventListener('click', function() {
 
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
 
-**name** *{String}* Sets the name where the `MDCDrawer` instance is referenced (default: `null`)
+**name** *{String}* Sets the name where the `MDCSliderDrawer` instance is referenced (default: `null`)
 
 **permanent** *{Boolean}* Sets the drawer type to permanent (default: `false`)
 

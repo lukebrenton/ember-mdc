@@ -46,8 +46,8 @@ export default Ember.Component.extend({
     const root = window.document.getElementById(id);
 
     const dialog = new MDCDialog(root);
-    this.set('dialog', dialog);
-    root.dialog = dialog;
+    this.set('mdcInstance', dialog);
+    root.mdcInstance = dialog;
 
     const name = this.get('name');
     if (name) {
@@ -81,7 +81,7 @@ export default Ember.Component.extend({
    * Properties *
    **************/
   /** @var {MDCDialog} */
-  dialog: null,
+  mdcInstance: null,
 
   /** @var {Object} */
   yieldDescription: {description: true},
