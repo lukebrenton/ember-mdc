@@ -105,9 +105,6 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   flexibleDefaultBehavior: false,
 
-  /** @var {Number} */
-  index: 0,
-
   /** @var {MDCToolbar} */
   mdcInstance: null
 });
