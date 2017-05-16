@@ -62,6 +62,16 @@ test('it supports the drawer attribute', function(assert) {
   assert.equal(window.emberMDC.test.open, true);
 });
 
+test('it supports the menu attribute', function(assert) {
+  this.render(hbs`{{mdc-icon menu="test" content="menu"}}`);
+
+  window.emberMDC = {test: {open: false}};
+
+  this.$('i').click();
+
+  assert.equal(window.emberMDC.test.open, true);
+});
+
 test('it supports the href attribute', function(assert) {
   this.render(hbs`{{mdc-icon href="#" content="menu"}}`);
 

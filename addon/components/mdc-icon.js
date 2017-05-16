@@ -50,6 +50,9 @@ export default Ember.Component.extend({
   material: true,
 
   /** @var {?String} */
+  menu: null,
+
+  /** @var {?String} */
   offContent: null,
 
   /** @var {?String} */
@@ -124,6 +127,15 @@ export default Ember.Component.extend({
         this.$().on('click', () => {
           const _drawer = emberMDC.get(drawer);
           _drawer.open = !_drawer.open;
+        });
+      }
+
+      const menu = this.get('menu');
+      if (menu) {
+        this.set('button', true);
+        this.$().on('click', () => {
+          const _menu = emberMDC.get(menu);
+          _menu.open = !_menu.open;
         });
       }
     }

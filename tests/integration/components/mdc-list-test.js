@@ -63,12 +63,13 @@ test('it supports the hasStartDetail attribute', function(assert) {
 });
 
 test('it supports the nav attribute', function(assert) {
-  this.set('items', [{href: '/test'}, {selected: true}, {}]);
+  this.set('items', [{href: '/test'}, {selected: true}, {tabindex: -1}]);
   this.render(hbs`{{#mdc-list items=items nav=true}}{{/mdc-list}}`);
 
   assert.equal(this.$('nav a').length, 3);
   assert.equal(this.$('nav a:nth-child(1)').attr('href'), '/test');
   assert.equal(this.$('nav a:nth-child(2)').hasClass('selected'), true);
+  assert.equal(this.$('nav a:nth-child(3)').attr('tabindex'), -1);
 });
 
 test('it supports the twoLines attribute', function(assert) {

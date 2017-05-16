@@ -51,6 +51,8 @@ export default Ember.Component.extend({
   /** @var {?String} */
   id: null,
 
+  menu: null,
+
   /** @var {?String} */
   name: null,
 
@@ -109,7 +111,19 @@ export default Ember.Component.extend({
 
     const drawer = this.get('drawer');
     if (drawer) {
-      this.$().on('click', () => emberMDC.get(drawer).open = true);
+      this.set('button', true);
+      this.$().on('click', () => {
+        const _drawer = emberMDC.get(drawer);
+        _drawer.open = !_drawer.open;
+      });
+    }
+
+    const menu = this.get('menu');
+    if (menu) {
+      this.$().on('click', () => {
+        const _menu = emberMDC.get(menu);
+        _menu.open = !_menu.open;
+      });
     }
 
     if (this.get('ripple')) {

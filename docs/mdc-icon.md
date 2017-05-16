@@ -89,6 +89,8 @@ Yields
 
 **material** *{Boolean}* Use the `material-icons` framework (default: `true`)
 
+**menu** *{String}* Open the corresponding menu when this icon is clicked. (Links to `mdc-menu` `name` attribute) (default: `null`)
+
 ## Icon Toggles
 
 In order to use icon toggles, you need to set the `offContent` and `onContent`

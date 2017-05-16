@@ -102,6 +102,16 @@ test('it supports the drawer attribute', function(assert) {
   assert.equal(window.emberMDC.test.open, true);
 });
 
+test('it supports the menu attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" menu="test"}}Test{{/mdc-button}}`);
+
+  window.emberMDC = {test: {open: false}};
+
+  this.$('button').click();
+
+  assert.equal(window.emberMDC.test.open, true);
+});
+
 test('it supports the form attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" form="test"}}Test{{/mdc-button}}`);
 

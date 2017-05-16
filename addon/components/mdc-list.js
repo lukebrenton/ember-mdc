@@ -30,6 +30,9 @@ export default Ember.Component.extend({
   items: null,
 
   /** @var {Boolean} */
+  menu: false,
+
+  /** @var {Boolean} */
   nav: false,
 
   /** @var {Boolean} */
@@ -48,13 +51,14 @@ export default Ember.Component.extend({
    * Ember Hooks *
    ***************/
   /** @var {String[]} */
-  attributeBindings: ['id'],
+  attributeBindings: ['aria-hidden', 'id', 'role'],
 
   /** @var {String[]} */
   classNameBindings: [
     'avatars:mdc-list--avatar-list',
     'dense:mdc-list--dense',
     'isGroupContainer:mdc-list-group:mdc-list',
+    'menu:mdc-simple-menu__items',
     'persistentDrawer:mdc-persistent-drawer__content',
     'temporaryDrawer:mdc-temporary-drawer__content',
     'twoLines:mdc-list--two-line'
@@ -93,6 +97,11 @@ export default Ember.Component.extend({
       this.set('nav', true);
     }
 
+    if (this.get('menu')) {
+      this.set('aria-hidden', 'true');
+      this.set('role', 'menu');
+    }
+
     if (this.get('nav')) {
       this.set('tagName', 'nav');
     }
@@ -115,6 +124,9 @@ export default Ember.Component.extend({
   isGroupContainer: Ember.computed('items', function() {
     return this.get('items') === null;
   }),
+
+  /** @var {String} */
+  role: null,
 
   /** @var {Object} */
   yieldDivider: {divider: true},

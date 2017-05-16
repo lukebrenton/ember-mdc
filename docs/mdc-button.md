@@ -62,6 +62,8 @@ Yields
 
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
 
+**menu** *{String}* Open the corresponding menu when this icon is clicked. (Links to `mdc-menu` `name` attribute) (default: `null`)
+
 **name** *{String}* Sets the name attribute on the button element (default: `null`)
 
 **primary** *{Boolean}* Use the primary color (default: `false`)

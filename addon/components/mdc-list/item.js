@@ -8,6 +8,9 @@ export default Ember.Component.extend({
   href: null,
 
   /** @var {Boolean} */
+  menu: false,
+
+  /** @var {Boolean} */
   nav: false,
 
   /** @var {Boolean} */
@@ -19,6 +22,9 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   selected: false,
 
+  /** @var {?Number} */
+  tabindex: null,
+
   /** @var {Boolean} */
   temporaryDrawer: false,
 
@@ -26,7 +32,7 @@ export default Ember.Component.extend({
    * Ember Hooks *
    ***************/
   /** @var {String[]} */
-  attributeBindings: ['href'],
+  attributeBindings: ['href', 'role', 'tabindex'],
 
   /** @var {String[]} */
   classNameBindings: [
@@ -42,6 +48,10 @@ export default Ember.Component.extend({
   /** @var {Function} */
   init() {
     this._super(...arguments);
+
+    if (this.get('menu')) {
+      this.set('role', 'menuitem');
+    }
 
     if (this.get('nav')) {
       if (!this.get('href')) {
@@ -65,6 +75,9 @@ export default Ember.Component.extend({
   /**************
    * Properties *
    **************/
+  /** @var {String} */
+  role: null,
+
   /** @var {String} */
   type: Ember.computed('{permanentDrawer,persistentDrawer,temporaryDrawer}', function() {
     const types = ['permanentDrawer', 'persistentDrawer', 'temporaryDrawer'];

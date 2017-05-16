@@ -7,10 +7,12 @@
     {{else}}
       {{#mdc-list/item
         href=item.href
+        menu=menu
         nav=nav
         permanentDrawer=permanentDrawer
         persistentDrawer=persistentDrawer
         selected=item.selected
+        tabindex=item.tabindex
         temporaryDrawer=temporaryDrawer
       }}
         {{#if hasStartDetail}}

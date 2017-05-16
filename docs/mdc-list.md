@@ -54,6 +54,20 @@ Yields
 </ul>
 ```
 
+### Items
+
+This component will iterate over the items passed into it and yield them back to you.
+It is expecting an array of objects. Special properties that this component looks for
+in an item are as follows:
+
+**divider** *{Boolean}* Setting this to true will yield no item so you can put in a divider (default: `false`)
+
+**href** *{String}* When using nav menus, sets the href attribute on the item (default: `null`)
+
+**selected** *{Boolean}* Indicates which item is selected (default: `false`)
+
+**tabindex** *{Number}* Sets the tabindex attribute on the item (default: `null`)
+
 ### Groups
 
 Lists can also be separated into groups. This can be accomplished with the following:
@@ -283,6 +297,8 @@ Yields
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
 
 **items** *{Object[]}* The items to iterate over (default: `null`)
+
+**menu** *{Boolean}* Indicates this list is in a menu (default: `false`)
 
 **nav** *{Boolean}* Use a nav list (default: `false`)
 
