@@ -32,6 +32,9 @@ export default Ember.Component.extend({
   drawer: null,
 
   /** @var {?String} */
+  href: null,
+
+  /** @var {?String} */
   iconInnerSelector: null,
 
   /** @var {?String} */
@@ -80,7 +83,7 @@ export default Ember.Component.extend({
   attributeBindings: [
     'aria-disabled', 'aria-hidden', 'aria-label', 'aria-pressed',
     'iconInnerSelector:data-icon-inner-selector', 'data-toggle-off', 'data-toggle-on',
-    'id', 'role'
+    'href', 'id', 'role'
   ],
 
   /** @var {String[]} */
@@ -185,6 +188,11 @@ export default Ember.Component.extend({
         this.set('aria-label', label);
       } else {
         this.set('aria-hidden', 'true');
+      }
+
+      if (this.get('href')) {
+        this.set('aria-hidden', null);
+        this.set('tagName', 'a');
       }
 
       this.set('disabled', false);

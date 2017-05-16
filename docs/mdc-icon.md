@@ -57,6 +57,22 @@ Yields
 <i id="ember371" aria-hidden="true" class="fa fa-star-o ember-view"></i>
 ```
 
+### Links
+
+You can have `mdc-icon` be a link by setting the `href` attribute.
+
+```hbs
+{{mdc-icon content="favorite_border" href="#"}}
+```
+
+Yields
+
+```html
+<a id="ember363" href="#" class="material-icons md-24 ember-view">
+  favorite_border
+</a>
+```
+
 ### Attributes
 
 **button** *{Boolean}* Use the icon as a button (default: `false`)
@@ -64,6 +80,8 @@ Yields
 **dialog** *{String}* Open the corresponding dialog when this icon is clicked. (Links to `mdc-dialog` `name` attribute) (default: `null`)
 
 **drawer** *{String}* Open the corresponding drawer when this icon is clicked. (Links to `mdc-drawer` `name` attribute) (default: `null`)
+
+**href** *{String}* Use the icon as a link and sets the href attribute (default: `null`)
 
 **inactive** *{Boolean}* Use the inactive style (default: `false`)
 
