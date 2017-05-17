@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import layout from 'ember-mdc/templates/components/mdc-menu';
 import { MDCSimpleMenu } from '@material/menu';
 import { emberMDC } from 'ember-mdc/util';
 
@@ -17,6 +18,9 @@ export default Ember.Component.extend({
 
   /** @var {?String} */
   id: null,
+
+  /** @var {Object[]} */
+  items: [],
 
   /** @var {?String} */
   name: null,
@@ -71,6 +75,9 @@ export default Ember.Component.extend({
       root.parentNode.classList.add('mdc-menu-anchor');
     }
   },
+
+  /** @var {Object} */
+  layout,
 
   /** @var {String} */
   tagName: 'div',

@@ -8,10 +8,8 @@ class to the correct element.
 ### Usage
 
 ```hbs
-{{#mdc-menu name="boxes"}}
-  {{#mdc-list menu=true items=model as |item|}}
-    {{item.name}}
-  {{/mdc-list}}
+{{#mdc-menu name="boxes" items=model as |item|}}
+  {{item.name}}
 {{/mdc-menu}}
 ```
 
