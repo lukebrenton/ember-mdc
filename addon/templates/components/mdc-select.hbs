@@ -1,0 +1,31 @@
+{{#if formattedGroups}}
+  {{#each formattedGroups as |group|}}
+    {{#if group.divider}}
+      {{#if multiple}}<option class="mdc-list-divider" role="presentation" disabled></option>{{/if}}
+    {{else}}
+      <optgroup class="{{if multiple 'mdc-list-group'}}" label="{{group.label}}">
+        {{#each group.options as |option|}}
+          <option
+            class="{{if multiple 'mdc-list-item'}}"
+            selected="{{if option.selected 'selected' null}}"
+            value="{{option.value}}"
+          >
+            {{option.name}}
+          </option>
+        {{/each}}
+      </optgroup>
+    {{/if}}
+  {{/each}}
+{{else if formattedOptions}}
+  {{#each formattedOptions as |option|}}
+    <option
+      class="{{if multiple 'mdc-list-item'}}"
+      selected="{{if option.selected 'selected' null}}"
+      value="{{option.value}}"
+    >
+      {{option.name}}
+    </option>
+  {{/each}}
+{{else}}
+  {{yield}}
+{{/if}}
