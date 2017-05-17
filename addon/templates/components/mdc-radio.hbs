@@ -1,0 +1,17 @@
+<div id="{{id}}" class="mdc-radio {{class}} {{if disabled 'mdc-radio--disabled'}}">
+  {{mdc-radio/input
+    attributes=inputAttributes
+    checked=checked
+    disabled=disabled
+    form=form
+    id=id
+    name=name
+    required=required
+    value=value
+  }}
+  <div class="mdc-radio__background">
+    <div class="mdc-radio__outer-circle"></div>
+    <div class="mdc-radio__inner-circle"></div>
+  </div>
+</div>
+{{#if label}}<label id="{{id}}-label" for="{{id}}-radio">{{label}}</label>{{/if}}
