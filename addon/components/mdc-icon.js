@@ -31,6 +31,9 @@ export default Ember.Component.extend({
   /** @var {?String} */
   drawer: null,
 
+  /** @var {Boolean} */
+  gridList: false,
+
   /** @var {?String} */
   href: null,
 
@@ -95,6 +98,7 @@ export default Ember.Component.extend({
     'button:md-button',
     'dark:md-dark',
     'disabled:mdc-icon-toggle--disabled',
+    'gridList:mdc-grid-tile__icon',
     'inactive:md-inactive',
     'light:md-light',
     'material:material-icons',

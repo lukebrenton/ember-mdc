@@ -1,0 +1,21 @@
+<ul class="mdc-grid-list__tiles">
+  {{#each items as |item|}}
+    <li class="mdc-grid-tile">
+      <div class="mdc-grid-tile__primary">
+        {{#if useDiv}}
+          <div class="mdc-grid-tile__primary-content"></div>
+        {{else}}
+          <img class="mdc-grid-tile__primary-content" src="{{item.src}}">
+        {{/if}}
+      </div>
+      {{#if imageOnly}}
+      {{else}}
+        <span class="mdc-grid-tile__secondary">
+          {{#if hasIcon}}{{yield item}}{{/if}}
+          <span class="mdc-grid-tile__title">{{item.title}}</span>
+          {{#if hasCaption}}<span class="mdc-grid-tile__support-text">{{item.caption}}</span>{{/if}}
+        </span>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
