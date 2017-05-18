@@ -51,6 +51,7 @@ export default Ember.Component.extend({
   /** @var {?String} */
   id: null,
 
+  /** @var {?String} */
   menu: null,
 
   /** @var {?String} */
@@ -64,6 +65,9 @@ export default Ember.Component.extend({
 
   /** @var {Boolean} */
   ripple: false,
+
+  /** @var {Boolean} */
+  snackbar: false,
 
   /** @var {?String} */
   type: null,
@@ -96,6 +100,7 @@ export default Ember.Component.extend({
     'dialogButton:mdc-dialog__footer__button',
     'dialogCancel:mdc-dialog__footer__button--cancel',
     'primary:mdc-button--primary',
+    'snackbar:mdc-snackbar__action-button',
     'raised:mdc-button--raised'
   ],
 

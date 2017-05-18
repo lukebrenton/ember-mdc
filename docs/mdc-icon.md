@@ -19,6 +19,8 @@ in this situation but you can tweak it to work differently.
 
 **dark** *{Boolean}* Use the dark theme (default: `false`)
 
+**gridList** *{Boolean}* Use this icon in a `mdc-grid-list` component (default: `false`)
+
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
 
 **primary** *{Boolean}* Use the primary color (default: `false`)

@@ -147,6 +147,12 @@ test('it supports the ripple attribute', function(assert) {
   assert.expect(0);
 });
 
+test('it supports the snackbar attribute', function(assert) {
+  this.render(hbs`{{#mdc-button id="test" snackbar=true}}Test{{/mdc-button}}`);
+
+  assert.equal(this.$('button').hasClass('mdc-snackbar__action-button'), true);
+});
+
 test('it supports the type attribute', function(assert) {
   this.render(hbs`{{#mdc-button id="test" type="button"}}Test{{/mdc-button}}`);
 

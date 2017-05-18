@@ -72,6 +72,12 @@ test('it supports the menu attribute', function(assert) {
   assert.equal(window.emberMDC.test.open, true);
 });
 
+test('it supports the gridList attribute', function(assert) {
+  this.render(hbs`{{mdc-icon gridList=true content="menu"}}`);
+
+  assert.equal(this.$('i').hasClass('mdc-grid-tile__icon'), true);
+});
+
 test('it supports the href attribute', function(assert) {
   this.render(hbs`{{mdc-icon href="#" content="menu"}}`);
 
