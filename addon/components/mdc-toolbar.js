@@ -86,7 +86,7 @@ export default Ember.Component.extend({
         const row = {};
         row[i + 1] = true;
 
-        arr.push(i + 1);
+        arr.push(row);
       }
 
       this.set('rows', arr);

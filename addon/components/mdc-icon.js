@@ -82,6 +82,9 @@ export default Ember.Component.extend({
   /** @var {Number} */
   size: 24,
 
+  /** @var {Boolean} */
+  tab: false,
+
   /***************
    * Ember Hooks *
    ***************/
@@ -107,6 +110,7 @@ export default Ember.Component.extend({
     'size24:md-24',
     'size36:md-36',
     'size48:md-48',
+    'tab:mdc-tab__icon',
     'toggle:mdc-icon-toggle'
   ],
 

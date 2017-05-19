@@ -1,0 +1,12 @@
+{{#each tabs as |tab|}}
+  {{#mdc-tabs/tab
+    active=tab.active
+    href=(if tab.href tab.href '#')
+    icons=icons
+    iconsWithText=iconsWithText
+    name=tab.name
+  }}
+    {{yield}}
+  {{/mdc-tabs/tab}}
+{{/each}}
+<span class="mdc-tab-bar__indicator"></span>

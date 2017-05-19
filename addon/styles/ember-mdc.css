@@ -40,3 +40,11 @@
   top: 0;
   width: 100%;
 }
+
+.mdc-toolbar__row .mdc-tab-bar {
+  margin-top: -4px;
+}
+
+.mdc-toolbar__row .mdc-tab-bar--icons-with-text {
+  margin-top: -28px;
+}

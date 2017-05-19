@@ -1,0 +1,8 @@
+{{#if icons}}
+  {{yield}}
+{{else if iconsWithText}}
+  {{yield}}
+  <span class="mdc-tab__icon-text">{{name}}</span>
+{{else}}
+  {{name}}
+{{/if}}
