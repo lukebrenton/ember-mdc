@@ -1,20 +1,22 @@
 {
   "name": "ember-mdc",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "material-components-web packaged into ember components",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "material-components-web",
+    "mdc"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "https://github.com/austp",
   "directories": {
-    "doc": "doc",
+    "doc": "docs",
+    "lib": "addon",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/austp/ember-mdc",
   "scripts": {
     "build": "ember build",
-    "start": "ember server",
     "test": "ember try:each"
   },
   "dependencies": {
