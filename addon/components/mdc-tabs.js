@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import layout from 'ember-mdc/templates/components/mdc-tabs';
 import { MDCTabBar } from '@material/tabs';
+import { emberMDC } from 'ember-mdc/util';
 
 export default Ember.Component.extend({
   /**************
@@ -52,6 +53,11 @@ export default Ember.Component.extend({
     const bar = new MDCTabBar(root);
     this.set('mdcInstance', bar);
     root.mdcInstance = bar;
+
+    const name = this.get('name');
+    if (name) {
+      emberMDC.set(name, bar);
+    }
   },
 
   /** @var {Function} */

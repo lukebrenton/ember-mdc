@@ -83,6 +83,17 @@ test('it supports the ID attribute', function(assert) {
   assert.equal(this.$('nav').attr('id'), 'test');
 });
 
+test('it supports the name attribute', function(assert) {
+  this.set('tabs', [
+    {active: true, href: '#alethkar', name: 'Alethkar'},
+    {href: '#jahKeved', name: 'Jah Keved'}
+  ]);
+
+  this.render(hbs`{{mdc-tabs tabs=tabs name="test"}}`);
+
+  assert.ok(window.emberMDC.test);
+});
+
 test('it supports primary attribute', function(assert) {
   this.set('tabs', [
     {active: true, href: '#alethkar', name: 'Alethkar'},

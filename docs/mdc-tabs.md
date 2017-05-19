@@ -77,6 +77,25 @@ ember-view mdc-tab-bar-upgraded">
 </nav>
 ```
 
+### Listening for Changes
+
+You can listen for changes like so:
+
+```js
+// if you did {{mdc-tabs tabs=tabs name="tabBar"}},
+// you could access the MDCTabBar instance like this:
+// let tabBar = window.emberMDC.tabBar;
+let tabBar = document.querySelector('nav').mdcInstance;
+
+tabBar.preventDefaultOnClick = true;
+
+tabBar.listen('MDCTabBar:change', function({detail: tabs}) {
+  let index = tabs.activeTabIndex;
+  
+  // do stuff
+});
+```
+
 ### Attributes
 
 **accent** *{Boolean}* Use the accent color (default: `false`)
@@ -88,6 +107,8 @@ ember-view mdc-tab-bar-upgraded">
 **iconsWithText** *{Boolean}* Use icons and text in the tabs (default: `false`)
 
 **id** *{String}* Sets the id attribute (default: `Ember.generateGuid()`)
+
+**name** *{String}* Sets the name where the `MDCTabBar` instance is referenced (default: `null`)
 
 **primary** *{Boolean}* Use the primary color (default: `false`)
 
