@@ -77,9 +77,36 @@ ember-view mdc-tab-bar-upgraded">
 </nav>
 ```
 
-### Listening for Changes
+### Switching Pages from Tabs
 
-You can listen for changes like so:
+Ember-mdc has a small shim in place that makes it easy for you to link pages
+to tabs. It is optional but it can be used as follows:
+
+```hbs
+{{mdc-tabs tabs=tabs}}
+<div class="md-page md-page--active" data-tab="alethkar">Alethkar rocks!</div>
+<div class="md-page" data-tab="jahKeved">Jah Keved rocks!</div>
+```
+
+Each element needs to have the `md-page` class as well as a `data-tab`
+attribute added that matches the `href` property of the corresponding tab
+object. For example: when the tab is changed, if the `href` property is set
+to `#alethkar`, the element with `data-tab="alethkar'"` will be made the
+active page. You can add `md-page--active` to make that element the
+currently active page.
+
+**Note:** If you named your `mdc-tabs` component or want to use multiple
+tabs on a single page, you will need to link your pages. You can do this
+by making the `mdc-tabs` `name` attribute equal to the element's
+`data-tab-group` attribute. For example:
+
+```hbs
+{{mdc-tabs tabs=tabs name="main"}}
+<div class="md-page md-page--active" data-tab-group="main" data-tab="alethkar">Alethkar rocks!</div>
+<div class="md-page" data-tab-group="main" data-tab="jahKeved">Jah Keved rocks!</div>
+```
+
+If you want to roll your own system to have more control, you can listen for changes like so:
 
 ```js
 // if you did {{mdc-tabs tabs=tabs name="tabBar"}},
@@ -89,7 +116,7 @@ let tabBar = document.querySelector('nav').mdcInstance;
 
 tabBar.preventDefaultOnClick = true;
 
-tabBar.listen('MDCTabBar:change', function({detail: tabs}) {
+tabBar.listen('MDCTabBar:change', ({detail: tabs}) => {
   let index = tabs.activeTabIndex;
   
   // do stuff

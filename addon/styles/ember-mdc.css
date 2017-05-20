@@ -48,3 +48,11 @@
 .mdc-toolbar__row .mdc-tab-bar--icons-with-text {
   margin-top: -28px;
 }
+
+.md-page {
+  display: none;
+}
+
+.md-page.md-page--active {
+  display: inherit;
+}

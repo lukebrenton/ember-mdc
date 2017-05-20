@@ -17,6 +17,7 @@
   "repository": "https://github.com/austp/ember-mdc",
   "scripts": {
     "build": "ember build",
+    "start": "ember server",
     "test": "ember try:each"
   },
   "dependencies": {

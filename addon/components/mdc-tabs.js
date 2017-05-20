@@ -50,14 +50,16 @@ export default Ember.Component.extend({
     const id = this.get('id');
     const root = window.document.getElementById(id);
 
-    const bar = new MDCTabBar(root);
-    this.set('mdcInstance', bar);
-    root.mdcInstance = bar;
+    const tabBar = new MDCTabBar(root);
+    this.set('mdcInstance', tabBar);
+    root.mdcInstance = tabBar;
 
     const name = this.get('name');
     if (name) {
-      emberMDC.set(name, bar);
+      emberMDC.set(name, tabBar);
     }
+
+    this.setupPageListener(tabBar);
   },
 
   /** @var {Function} */
@@ -75,6 +77,60 @@ export default Ember.Component.extend({
 
   /** @var {String} */
   tagName: 'nav',
+
+  /***********
+   * Methods *
+   ***********/
+  /**
+   * Finds the first element that matches the selector in the NodeList
+   * @param {NodeList} nodeList The NodeList to search
+   * @param {string} selector The selector to use
+   * @return {HTMLElement}
+   */
+  find(nodeList, selector) {
+    for (let i = 0, l = nodeList.length; i < l; i++) {
+      const element = nodeList[i];
+      if (element.matches(selector)) {
+        return element;
+      }
+    }
+
+    return null;
+  },
+
+  /**
+   * Sets up the page listener for md-page elements
+   */
+  setupPageListener(tabBar) {
+    tabBar.listen('MDCTabBar:change', (e) => {
+      const index = e.detail.activeTabIndex;
+      const tab = tabBar.root_.children[index];
+
+      if (!tab || !tab.href || tab.href.indexOf('#') == -1) {
+        return;
+      }
+
+      const href = tab.href.split('#')[1];
+
+      const name = this.get('name');
+      const pages = name ?
+        document.querySelectorAll(`.md-page[data-tab-group="${name}"]`) :
+        document.querySelectorAll('.md-page:not([data-tab-group])');
+
+      const active = this.find(pages, '.md-page--active');
+      const page = this.find(pages, `[data-tab="${href}"]`);
+
+      if (active != page) {
+        if (active) {
+          active.classList.remove('md-page--active');
+        }
+
+        if (page) {
+          page.classList.add('md-page--active');
+        }
+      }
+    });
+  },
 
   /**************
    * Properties *
