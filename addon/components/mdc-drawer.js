@@ -70,6 +70,10 @@ export default Ember.Component.extend({
 
       root[0].mdcInstance = drawer;
       this.set('mdcInstance', drawer);
+
+      root.find('a').click(() => {
+        drawer.open = false;
+      });
     }
   },
 

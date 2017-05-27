@@ -1,12 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+export default Ember.LinkComponent.extend({
   /**************
    * Attributes *
    **************/
-  /** @var {?String} */
-  href: null,
-
   /** @var {Boolean} */
   menu: false,
 
@@ -22,9 +19,6 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   selected: false,
 
-  /** @var {?Number} */
-  tabindex: null,
-
   /** @var {Boolean} */
   temporaryDrawer: false,
 
@@ -32,7 +26,7 @@ export default Ember.Component.extend({
    * Ember Hooks *
    ***************/
   /** @var {String[]} */
-  attributeBindings: ['href', 'role', 'tabindex'],
+  attributeBindings: ['role'],
 
   /** @var {String[]} */
   classNameBindings: [
@@ -46,6 +40,16 @@ export default Ember.Component.extend({
   classNames: ['mdc-list-item'],
 
   /** @var {Function} */
+  didInsertElement() {
+    if (this.get('tagName') == 'a') {
+      this.$().click((e) => {
+        e.preventDefault();
+        this.trigger('click', e);
+      });
+    }
+  },
+
+  /** @var {Function} */
   init() {
     this._super(...arguments);
 
@@ -54,13 +58,7 @@ export default Ember.Component.extend({
     }
 
     if (this.get('nav')) {
-      if (!this.get('href')) {
-        this.set('href', '#');
-      }
-
       this.set('tagName', 'a');
-    } else {
-      this.set('href', null);
     }
 
     if (this.get('selected')) {
@@ -89,5 +87,5 @@ export default Ember.Component.extend({
     }
 
     return '';
-  }),
+  })
 });

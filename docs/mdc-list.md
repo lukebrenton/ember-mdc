@@ -240,8 +240,8 @@ want it to be. For example:
 
 ```js
 const items = [
-  {selected: true, href: '/inbox', name: 'Inbox', icon: 'inbox'},
-  {href: '/starred', name: 'Starred', icon: 'star'}
+  {selected: true, href: 'inbox', name: 'Inbox', icon: 'inbox'},
+  {href: 'starred', name: 'Starred', icon: 'star'}
 ];
 ```
 

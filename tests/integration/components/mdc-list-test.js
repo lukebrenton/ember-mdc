@@ -1,8 +1,19 @@
+import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
 
 moduleForComponent('mdc-list', 'Integration | Component | mdc-list', {
-  integration: true
+  integration: true,
+
+  // setup a routing service stub: https://github.com/emberjs/ember-qunit/issues/52
+  setup: function () {
+    this.registry.register('service:-routing', Ember.Object.extend({
+      availableRoutes: () => ['index'],
+      hasRoute: (name) => name === 'index',
+      isActiveForRoute: () => true,
+      generateURL: () => '/'
+    }));
+  }
 });
 
 test('it supports the ID attribute', function(assert) {
@@ -63,11 +74,11 @@ test('it supports the hasStartDetail attribute', function(assert) {
 });
 
 test('it supports the nav attribute', function(assert) {
-  this.set('items', [{href: '/test'}, {selected: true}, {tabindex: -1}]);
+  this.set('items', [{href: 'index'}, {selected: true}, {tabindex: -1}]);
   this.render(hbs`{{#mdc-list items=items nav=true}}{{/mdc-list}}`);
 
   assert.equal(this.$('nav a').length, 3);
-  assert.equal(this.$('nav a:nth-child(1)').attr('href'), '/test');
+  assert.equal(this.$('nav a:nth-child(1)').attr('href'), '/');
   assert.equal(this.$('nav a:nth-child(2)').hasClass('selected'), true);
   assert.equal(this.$('nav a:nth-child(3)').attr('tabindex'), -1);
 });

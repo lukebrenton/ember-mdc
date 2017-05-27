@@ -5,8 +5,7 @@
     {{#if item.divider}}
       {{yield item yieldDivider}}
     {{else}}
-      {{#mdc-list/item
-        href=item.href
+      {{#mdc-list/item item.href
         menu=menu
         nav=nav
         permanentDrawer=permanentDrawer
