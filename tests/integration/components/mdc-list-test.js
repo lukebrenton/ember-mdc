@@ -1,18 +1,12 @@
-import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
+import setupRouter from '../../helpers/setup-router';
 
 moduleForComponent('mdc-list', 'Integration | Component | mdc-list', {
   integration: true,
 
-  // setup a routing service stub: https://github.com/emberjs/ember-qunit/issues/52
-  setup: function () {
-    this.registry.register('service:-routing', Ember.Object.extend({
-      availableRoutes: () => ['index'],
-      hasRoute: (name) => name === 'index',
-      isActiveForRoute: () => true,
-      generateURL: () => '/'
-    }));
+  setup() {
+    setupRouter(this);
   }
 });
 

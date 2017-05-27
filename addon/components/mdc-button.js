@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { MDCRipple } from '@material/ripple';
 import { emberMDC } from 'ember-mdc/util';
 
-export default Ember.Component.extend({
+export default Ember.LinkComponent.extend({
   /**************
    * Attributes *
    **************/
@@ -46,9 +46,6 @@ export default Ember.Component.extend({
   form: null,
 
   /** @var {?String} */
-  href: null,
-
-  /** @var {?String} */
   id: null,
 
   /** @var {?String} */
@@ -80,7 +77,7 @@ export default Ember.Component.extend({
    ***************/
   /** @var {String[]} */
   attributeBindings: [
-    'disabled', 'form', 'href', 'id', 'name', 'tabindex', 'type', 'value',
+    'disabled', 'form', 'id', 'name', 'tabindex', 'type', 'value',
 
     // extra attributes for button elements
     'autofocus', 'autocomplete', 'formaction', 'formenctype', 'formmethod', 'formnovalidate', 'formtarget',
@@ -131,6 +128,13 @@ export default Ember.Component.extend({
       });
     }
 
+    if (this.get('tagName') == 'a') {
+      this.$().click((e) => {
+        e.preventDefault();
+        this.trigger('click', e);
+      });
+    }
+
     if (this.get('ripple')) {
       MDCRipple.attachTo(this.$()[0]);
     }
@@ -148,16 +152,17 @@ export default Ember.Component.extend({
       this.set('dialogButton', true);
     }
 
-    if (this.get('href')) {
+    if (this.get('params')) {
       this.set('form', null);
       this.set('name', null);
       this.set('value', null);
 
       if (!this.get('disabled')) {
         this.set('tagName', 'a');
-      } else {
-        this.set('href', null);
       }
+    } else {
+      this.set('params', ['index']);
+      this.set('disabledwhen', () => true);
     }
 
     const attributes = this.get('attributes');

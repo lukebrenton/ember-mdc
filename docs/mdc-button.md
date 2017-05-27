@@ -3,7 +3,7 @@
 ### Usage
 
 ```hbs
-{{#mdc-button}}Flat Button{{/mdc-button}}
+{{#mdc-button primary=true raised=true}}Submit{{/mdc-button}}
 ```
 
 Yields
@@ -12,15 +12,17 @@ Yields
 <button id="ember400" class="mdc-button mdc-button--primary mdc-button--raised ember-view">Submit</button>
 ```
 
-The `mdc-button` component can output a `button` or `a` element depending on the parameters you supply.
+### Links
 
-If you supply a value for `href`, `mdc-button` will ignore values set for `form`, `name`, `type`, and `value`.
-The only exception to this rule is if `disabled` is set to true. In that case, those values are still ignored but
-a `button` element is used and has the `disabled` attribute on it.
+Many times, we want buttons to link to different parts of our app. The `mdc-button` component makes it
+easy for you to turn your button into a link by providing the route that it links to. When used this way,
+`mdc-button` will ignore values set for `form`, `name`, `type`, and `value`. The only exception to this rule is
+if `disabled` is set to true. In that case, those values are still ignored but a `button` element is used and
+has the `disabled` attribute on it.
 
 ```hbs
-{{#mdc-button href="/about"}}About{{/mdc-button}}
-{{#mdc-button href="/about" disabled=true}}About{{/mdc-button}}
+{{#mdc-button "about"}}About{{/mdc-button}}
+{{#mdc-button "about" disabled=true}}About{{/mdc-button}}
 ```
 
 Yields

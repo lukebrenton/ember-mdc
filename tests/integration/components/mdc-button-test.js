@@ -1,8 +1,13 @@
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
+import setupRouter from '../../helpers/setup-router';
 
 moduleForComponent('mdc-button', 'Integration | Component | mdc-button', {
-  integration: true
+  integration: true,
+
+  setup() {
+    setupRouter(this);
+  }
 });
 
 test('it supports the ID attribute', function(assert) {
@@ -118,10 +123,10 @@ test('it supports the form attribute', function(assert) {
   assert.equal(this.$('button').attr('form'), 'test');
 });
 
-test('it supports the href attribute', function(assert) {
-  this.render(hbs`{{#mdc-button id="test" href="/test"}}Test{{/mdc-button}}`);
+test('it supports passing in an href', function(assert) {
+  this.render(hbs`{{#mdc-button "index" id="test"}}Test{{/mdc-button}}`);
 
-  assert.equal(this.$('a').attr('href'), '/test');
+  assert.equal(this.$('a').attr('href'), '/');
 });
 
 test('it supports the name attribute', function(assert) {
