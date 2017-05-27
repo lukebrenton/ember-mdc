@@ -41,7 +41,7 @@ export default Ember.LinkComponent.extend({
 
   /** @var {Function} */
   didInsertElement() {
-    if (this.get('tagName') == 'a') {
+    if (this.get('tagName') == 'a' && !this.get('linkDisabled')) {
       this.$().click((e) => {
         e.preventDefault();
         this.trigger('click', e);
@@ -73,6 +73,9 @@ export default Ember.LinkComponent.extend({
   /**************
    * Properties *
    **************/
+  /** @var {Boolean} */
+  linkDisabled: false,
+
   /** @var {String} */
   role: null,
 

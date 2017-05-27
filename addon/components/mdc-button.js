@@ -128,7 +128,7 @@ export default Ember.LinkComponent.extend({
       });
     }
 
-    if (this.get('tagName') == 'a') {
+    if (this.get('tagName') == 'a' && !this.get('linkDisabled')) {
       this.$().click((e) => {
         e.preventDefault();
         this.trigger('click', e);
@@ -162,7 +162,7 @@ export default Ember.LinkComponent.extend({
       }
     } else {
       this.set('params', ['index']);
-      this.set('disabledwhen', () => true);
+      this.set('linkDisabled', true);
     }
 
     const attributes = this.get('attributes');
@@ -178,5 +178,8 @@ export default Ember.LinkComponent.extend({
    * Properties *
    **************/
   /** @var {Boolean} */
-  dialogButton: false
+  dialogButton: false,
+
+  /** @var {Boolean} */
+  linkDisabled: false
 });

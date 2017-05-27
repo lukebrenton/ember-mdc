@@ -1,8 +1,13 @@
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
+import setupRouter from '../../helpers/setup-router';
 
 moduleForComponent('mdc-icon', 'Integration | Component | mdc-icon', {
-  integration: true
+  integration: true,
+
+  setup() {
+    setupRouter(this);
+  }
 });
 
 test('it supports the ID attribute', function(assert) {
@@ -78,10 +83,10 @@ test('it supports the gridList attribute', function(assert) {
   assert.equal(this.$('i').hasClass('mdc-grid-tile__icon'), true);
 });
 
-test('it supports the href attribute', function(assert) {
-  this.render(hbs`{{mdc-icon href="#" content="menu"}}`);
+test('it supports linking to routes', function(assert) {
+  this.render(hbs`{{mdc-icon "index" content="menu"}}`);
 
-  assert.equal(this.$('a').attr('href'), '#');
+  assert.equal(this.$('a').attr('href'), '/');
 });
 
 test('it supports the primary attribute', function(assert) {

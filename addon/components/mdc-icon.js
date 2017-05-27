@@ -3,7 +3,7 @@ import layout from 'ember-mdc/templates/components/mdc-icon';
 import { MDCIconToggle } from '@material/icon-toggle';
 import { emberMDC } from 'ember-mdc/util';
 
-export default Ember.Component.extend({
+export default Ember.LinkComponent.extend({
   /**************
    * Attributes *
    **************/
@@ -33,9 +33,6 @@ export default Ember.Component.extend({
 
   /** @var {Boolean} */
   gridList: false,
-
-  /** @var {?String} */
-  href: null,
 
   /** @var {?String} */
   iconInnerSelector: null,
@@ -92,7 +89,7 @@ export default Ember.Component.extend({
   attributeBindings: [
     'aria-disabled', 'aria-hidden', 'aria-label', 'aria-pressed',
     'iconInnerSelector:data-icon-inner-selector', 'data-toggle-off', 'data-toggle-on',
-    'href', 'id', 'role'
+    'id', 'role'
   ],
 
   /** @var {String[]} */
@@ -146,7 +143,33 @@ export default Ember.Component.extend({
           _menu.open = !_menu.open;
         });
       }
+
+      if (this.get('tagName') == 'a' && !this.get('linkDisabled')) {
+        this.$().click((e) => {
+          e.preventDefault();
+          this.trigger('click', e);
+        });
+      }
     }
+  },
+
+  /** @var {Function} */
+  didReceiveAttrs() {
+    const params = this.get('params').slice();
+
+    this._super(...arguments);
+
+    if (this.get('linkTitle')) {
+      // if this is set, our component was called inline
+      // we need to re-run our parent function with correct parameters
+      params.unshift('linkTitle placeholder');
+      this.set('params', params);
+
+      this._super(...arguments);
+    }
+
+    const label = this.get('label');
+    this.set('linkTitle', label ? label : this.get('content'));
   },
 
   /** @var {Function} */
@@ -154,6 +177,9 @@ export default Ember.Component.extend({
     this._super(...arguments);
 
     if (this.get('toggle')) {
+      this.set('params', ['index']);
+      this.set('linkDisabled', true);
+
       if (this.get('iconInnerSelector')) {
         this.set('material', false);
         this.set('tagName', 'span');
@@ -210,9 +236,13 @@ export default Ember.Component.extend({
         this.set('aria-hidden', 'true');
       }
 
-      if (this.get('href')) {
+      if (this.get('params')) {
         this.set('aria-hidden', null);
+        this.set('button', true);
         this.set('tagName', 'a');
+      } else {
+        this.set('params', ['index']);
+        this.set('linkDisabled', true);
       }
 
       this.set('disabled', false);
@@ -240,6 +270,9 @@ export default Ember.Component.extend({
    **************/
   /** @var {MDCIconToggle} */
   iconToggle: null,
+
+  /** @var {Boolean} */
+  linkDisabled: false,
 
   /** @var {Boolean} */
   toggle: Ember.computed('{offContent,onContent,iconInnerSelector,offCSSClass,onCSSClass}', function() {
