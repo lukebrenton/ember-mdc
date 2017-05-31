@@ -104,6 +104,13 @@ var materialPackages = [
   },
   {
     css: true,
+    depends: ['animation', 'theme'],
+    js: true,
+    name: 'linearProgress',
+    path: 'linear-progress'
+  },
+  {
+    css: true,
     depends: ['ripple', 'rtl', 'theme', 'typography'],
     js: false,
     name: 'list',

@@ -113,9 +113,9 @@
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@material/layout-grid/-/layout-grid-0.1.2.tgz#c19d69e3a8ff9f0949528e1c7fe2ab4fda492c7b"
 
-"@material/linear-progress@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@material/linear-progress/-/linear-progress-0.1.0.tgz#625d4332d2a7bbecb7782f245d298db8f88c989d"
+"@material/linear-progress@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@material/linear-progress/-/linear-progress-0.1.1.tgz#29861c19ed75cab9a0d2051c5ae584cc1229d090"
   dependencies:
     "@material/animation" "^0.2.3"
     "@material/base" "^0.2.0"
@@ -3935,9 +3935,9 @@ matcher-collection@^1.0.0, matcher-collection@^1.0.1:
   dependencies:
     minimatch "^3.0.2"
 
-material-components-web@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/material-components-web/-/material-components-web-0.12.0.tgz#0be0747039ea065e88e444a421e62a8fe33595a2"
+material-components-web@^0.12.1:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/material-components-web/-/material-components-web-0.12.1.tgz#3ef8562b53acfc23bbeae812751ba021e246cbb0"
   dependencies:
     "@material/animation" "^0.2.3"
     "@material/auto-init" "^0.1.2"
@@ -3953,7 +3953,7 @@ material-components-web@^0.12.0:
     "@material/grid-list" "^0.2.3"
     "@material/icon-toggle" "^0.1.12"
     "@material/layout-grid" "^0.1.2"
-    "@material/linear-progress" "^0.1.0"
+    "@material/linear-progress" "^0.1.1"
     "@material/list" "^0.2.9"
     "@material/menu" "^0.2.7"
     "@material/radio" "^0.2.5"
