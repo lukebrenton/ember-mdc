@@ -3,7 +3,7 @@ module.exports = {
   normalizeEntityName: function() {},
   afterInstall: function() {
     return this.addPackagesToProject([
-      { name: 'material-components-web', target: '^0.11.1' }
+      { name: 'material-components-web', target: '^0.12.0' }
     ]);
   }
 };
