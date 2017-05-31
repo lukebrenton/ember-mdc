@@ -77,11 +77,15 @@ Yields
 
 ### Attributes
 
+**backTab** *{Boolean}* Use the icon as a back button in a `mdc-tabs/scroller` (default: `false`)
+
 **button** *{Boolean}* Use the icon as a button (default: `false`)
 
 **dialog** *{String}* Open the corresponding dialog when this icon is clicked. (Links to `mdc-dialog` `name` attribute) (default: `null`)
 
 **drawer** *{String}* Open the corresponding drawer when this icon is clicked. (Links to `mdc-drawer` `name` attribute) (default: `null`)
+
+**forwardTab** *{Boolean}* Use the icon as a forward button in a `mdc-tabs/scroller` (default: `false`)
 
 **inactive** *{Boolean}* Use the inactive style (default: `false`)
 

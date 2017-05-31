@@ -1,0 +1,26 @@
+<div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--back">
+  {{#if customIcons}}
+    {{yield yieldBack}}
+  {{else}}
+    {{mdc-icon content="navigate_before" backTab=true label="scroll back button"}}
+  {{/if}}
+</div>
+<div class="mdc-tab-bar-scroller__scroll-frame">
+  {{#mdc-tabs
+    accent=accent
+    icons=icons
+    iconsWithText=iconsWithText
+    primary=primary
+    scroller=true
+    tabs=tabs
+  }}
+    {{yield yieldIcon}}
+  {{/mdc-tabs}}
+</div>
+<div class="mdc-tab-bar-scroller__indicator mdc-tab-bar-scroller__indicator--forward">
+  {{#if customIcons}}
+    {{yield yieldForward}}
+  {{else}}
+    {{mdc-icon content="navigate_next" forwardTab=true label="scroll forward button"}}
+  {{/if}}
+</div>

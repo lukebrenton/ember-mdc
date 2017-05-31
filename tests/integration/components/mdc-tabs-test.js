@@ -104,3 +104,35 @@ test('it supports primary attribute', function(assert) {
 
   assert.equal(this.$('nav').hasClass('mdc-tab-bar--indicator-primary'), true);
 });
+
+test('it supports having a scroller', function(assert) {
+  this.set('tabs', [
+    {active: true, href: '#alethkar', name: 'Alethkar'},
+    {href: '#jahKeved', name: 'Jah Keved'}
+  ]);
+
+  this.render(hbs`{{mdc-tabs/scroller tabs=tabs}}`);
+
+  assert.equal(this.$('div').hasClass('mdc-tab-bar-scroller'), true);
+  assert.equal(this.$('.mdc-tab-bar-scroller__indicator--back i').hasClass('mdc-tab-bar-scroller__indicator__inner'), true);
+  assert.equal(this.$('.mdc-tab-bar-scroller__indicator--forward i').hasClass('mdc-tab-bar-scroller__indicator__inner'), true);
+  assert.equal(this.$('.mdc-tab-bar-scroller__scroll-frame nav a').length, 2);
+});
+
+test('it supports having a scroller with custom icons', function(assert) {
+  this.set('tabs', [
+    {active: true, href: '#alethkar', name: 'Alethkar'},
+    {href: '#jahKeved', name: 'Jah Keved'}
+  ]);
+
+  this.render(hbs`{{#mdc-tabs/scroller customIcons=true tabs=tabs as |block|}}
+    {{#if block.back}}
+      {{mdc-icon content="arrow_back" backTab=true}}
+    {{else if block.forward}}
+      {{mdc-icon content="arrow_forward" forwardTab=true}}
+    {{/if}}
+  {{/mdc-tabs/scroller}}`);
+
+  assert.equal(this.$('.mdc-tab-bar-scroller__indicator--back i')[0].textContent.trim(), 'arrow_back');
+  assert.equal(this.$('.mdc-tab-bar-scroller__indicator--forward i')[0].textContent.trim(), 'arrow_forward');
+});

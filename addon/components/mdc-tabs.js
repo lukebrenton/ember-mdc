@@ -25,6 +25,9 @@ export default Ember.Component.extend({
   /** @var {Boolean} */
   primary: false,
 
+  /** @var {Boolean} */
+  scroller: false,
+
   /** @var {Object[]} */
   tabs: [],
 
@@ -39,7 +42,8 @@ export default Ember.Component.extend({
     'accent:mdc-tab-bar--indicator-accent',
     'icons:mdc-tab-bar--icon-tab-bar',
     'iconsWithText:mdc-tab-bar--icons-with-text',
-    'primary:mdc-tab-bar--indicator-primary'
+    'primary:mdc-tab-bar--indicator-primary',
+    'scroller:mdc-tab-bar-scroller__scroll-frame__tabs'
   ],
 
   /** @var {String[]} */
@@ -135,6 +139,9 @@ export default Ember.Component.extend({
   /**************
    * Properties *
    **************/
-  /** @var MDCTabBar */
-  mdcInstance: null
+  /** @var {MDCTabBar} */
+  mdcInstance: null,
+
+  /** @var {Object} */
+  yieldIcon: {icon: true}
 });

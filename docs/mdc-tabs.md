@@ -47,7 +47,7 @@ set the `tab` attribute to `true` on the `mdc-icon` component.
 As an example:
 
 ```hbs
-{{#mdc-tabs iconsWithText=true tabs=tabs as |tab|}}
+{{#mdc-tabs iconsWithText=true tabs=tabs as |block|}}
   {{mdc-icon tab=true content="location_on"}}
 {{/mdc-tabs}}
 ```
@@ -76,6 +76,47 @@ ember-view mdc-tab-bar-upgraded">
   <span class="mdc-tab-bar__indicator"></span>
 </nav>
 ```
+
+### Tabs with Scroller
+
+In order to get tabs with a scroller, you need to use the component as such:
+
+```hbs
+{{mdc-tabs/scroller tabs=tabs}}
+```
+
+`mdc-tabs/scroller` will automatically use `mdc-icon`s for the back and forward
+icons. If you want to use custom icons, you can set the `customIcons` attribute
+to `true`. Then you can change them like so:
+
+```hbs
+{{#mdc-tabs/scroller customIcons=true tabs=tabs as |block|}}
+  {{if block.back}}
+    {{mdc-icon content="arrow_back" backTab=true label="scroll back button"}}
+  {{else if block.forward}}
+    {{mdc-icon content="arrow_forward" backTab=true label="scroll back button"}}
+  {{/if}}
+{{/mdc-tabs/scroller}}
+```
+
+If you wanted to add icons to the tabs with `icons` or `iconsWithText`, that
+would work like so:
+
+```hbs
+{{#mdc-tabs/scroller customIcons=true iconsWithText=true tabs=tabs as |block|}}
+  {{if block.back}}
+    {{mdc-icon content="arrow_back" backTab=true label="scroll back button"}}
+  {{else if block.icon}}
+    {{mdc-icon tab=true content="location_on"}}
+  {{else if block.forward}}
+    {{mdc-icon content="arrow_forward" backTab=true label="scroll back button"}}
+  {{/if}}
+{{/mdc-tabs/scroller}}
+```
+
+**customIcons** *{Boolean}* Use custom icons (default: `false`)
+
+**name** *{String}* Sets the name where the `MDCTabBarScroller` instance is referenced (default: `null`)
 
 ### Switching Pages from Tabs
 

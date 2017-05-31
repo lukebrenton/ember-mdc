@@ -3,6 +3,7 @@
 
 /* Based on https://github.com/secondstreet/ember-material-components-web/blob/master/index.js */
 
+var fs = require('fs');
 var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var materialPackages = [
@@ -163,7 +164,7 @@ var materialPackages = [
     js: true,
     name: 'tabs',
     path: 'tabs',
-    structure: ['tab-bar', 'tab']
+    structure: ['tab-bar-scroller', 'tab-bar', 'tab']
   },
   {
     css: true,
@@ -289,10 +290,12 @@ module.exports = {
       return tree;
     });
 
-    trees.push(new Funnel('node_modules/ember-mdc', {
-      destDir: 'material-components-web',
-      include: ['material-components-web.scss']
-    }));
+    if (fs.existsSync('node_modules/ember-mdc')) {
+      trees.push(new Funnel('node_modules/ember-mdc', {
+        destDir: 'material-components-web',
+        include: ['material-components-web.scss']
+      }));
+    }
 
     return this._super(mergeTrees(trees, { overwrite: true }));
   }

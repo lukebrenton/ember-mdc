@@ -11,6 +11,9 @@ export default Ember.LinkComponent.extend({
   accent: false,
 
   /** @var {Boolean} */
+  backTab: false,
+
+  /** @var {Boolean} */
   button: false,
 
   /** @var {?String} */
@@ -30,6 +33,9 @@ export default Ember.LinkComponent.extend({
 
   /** @var {?String} */
   drawer: null,
+
+  /** @var {Boolean} */
+  forwardTab: false,
 
   /** @var {Boolean} */
   gridList: false,
@@ -95,9 +101,11 @@ export default Ember.LinkComponent.extend({
   /** @var {String[]} */
   classNameBindings: [
     'accent:mdc-theme--accent',
+    'backTab:mdc-tab-bar-scroller__indicator__inner',
     'button:md-button',
     'dark:md-dark',
     'disabled:mdc-icon-toggle--disabled',
+    'forwardTab:mdc-tab-bar-scroller__indicator__inner',
     'gridList:mdc-grid-tile__icon',
     'inactive:md-inactive',
     'light:md-light',

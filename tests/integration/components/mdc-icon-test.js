@@ -34,6 +34,12 @@ test('it supports the accent attribute', function(assert) {
   assert.equal(this.$('i').hasClass('mdc-theme--accent'), true);
 });
 
+test('it supports the backTab attribute', function(assert) {
+  this.render(hbs`{{mdc-icon content="favorite" backTab=true}}`);
+
+  assert.equal(this.$('i').hasClass('mdc-tab-bar-scroller__indicator__inner'), true);
+});
+
 test('it supports the class attribute', function(assert) {
   this.render(hbs`{{mdc-icon content="favorite" class="test"}}`);
 
@@ -75,6 +81,12 @@ test('it supports the menu attribute', function(assert) {
   this.$('i').click();
 
   assert.equal(window.emberMDC.test.open, true);
+});
+
+test('it supports the forwardTab attribute', function(assert) {
+  this.render(hbs`{{mdc-icon content="favorite" backTab=true}}`);
+
+  assert.equal(this.$('i').hasClass('mdc-tab-bar-scroller__indicator__inner'), true);
 });
 
 test('it supports the gridList attribute', function(assert) {
