@@ -64,6 +64,8 @@ in an item are as follows:
 
 **href** *{String}* When using nav menus, sets the href attribute on the item (default: `null`)
 
+**model** *{Mixed}* The model / ID to pass to `link-to` (default: `null`)
+
 **selected** *{Boolean}* Indicates which item is selected (default: `false`)
 
 **tabindex** *{Number}* Sets the tabindex attribute on the item (default: `null`)

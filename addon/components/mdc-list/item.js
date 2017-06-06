@@ -41,7 +41,7 @@ export default Ember.LinkComponent.extend({
 
   /** @var {Function} */
   didInsertElement() {
-    if (this.get('tagName') == 'a' && !this.get('linkDisabled')) {
+    if (this.get('tagName') == 'a' && !this.get('_isDisabled')) {
       this.$().click((e) => {
         e.preventDefault();
         this.trigger('click', e);
@@ -59,11 +59,19 @@ export default Ember.LinkComponent.extend({
 
     if (this.get('nav')) {
       this.set('tagName', 'a');
+    } else {
+      this.set('_isDisabled', true);
     }
 
     if (this.get('selected')) {
       const type = this.get('type');
       this.set(`${type}Selected`, true);
+    }
+
+    const params = this.get('params');
+    const model = this.get('model');
+    if (model) {
+      params.push(model);
     }
   },
 
@@ -74,7 +82,7 @@ export default Ember.LinkComponent.extend({
    * Properties *
    **************/
   /** @var {Boolean} */
-  linkDisabled: false,
+  _isDisabled: false,
 
   /** @var {String} */
   role: null,
