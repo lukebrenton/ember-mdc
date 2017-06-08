@@ -77,6 +77,14 @@ test('it supports the nav attribute', function(assert) {
   assert.equal(this.$('nav a:nth-child(3)').attr('tabindex'), -1);
 });
 
+test('it supports the ripple attribute', function(assert) {
+  this.set('items', [{href: 'index'}, {selected: true}, {tabindex: -1}]);
+  this.render(hbs`{{#mdc-list items=items ripple=true}}{{/mdc-list}}`);
+
+  // TODO: figure out how to test for this
+  assert.expect(0);
+});
+
 test('it supports the twoLines attribute', function(assert) {
   this.set('items', [{}, {}, {}]);
   this.render(hbs`{{#mdc-list items=items twoLines=true}}{{/mdc-list}}`);

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { MDCRipple } from '@material/ripple';
 
 export default Ember.LinkComponent.extend({
   /**************
@@ -15,6 +16,9 @@ export default Ember.LinkComponent.extend({
 
   /** @var {Boolean} */
   persistentDrawer: false,
+
+  /** @var {Boolean} */
+  ripple: false,
 
   /** @var {Boolean} */
   selected: false,
@@ -46,6 +50,10 @@ export default Ember.LinkComponent.extend({
         e.preventDefault();
         this.trigger('click', e);
       });
+    }
+
+    if (this.get('ripple')) {
+      MDCRipple.attachTo(this.$()[0]);
     }
   },
 

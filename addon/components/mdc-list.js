@@ -42,6 +42,9 @@ export default Ember.Component.extend({
   persistentDrawer: false,
 
   /** @var {Boolean} */
+  ripple: false,
+
+  /** @var {Boolean} */
   temporaryDrawer: false,
 
   /** @var {Boolean} */

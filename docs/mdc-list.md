@@ -308,6 +308,8 @@ Yields
 
 **persistentDrawer** *{Boolean}* Use styling for persistent drawer (default: `false`)
 
+**ripple** *{Boolean}* Put ripple effects on the list items (default: `false`)
+
 **temporaryDrawer** *{Boolean}* Use styling for temporary drawer (default: `false`)
 
 **twoLines** *{Boolean}* Use the two line style (default: `false`)
