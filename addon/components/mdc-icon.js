@@ -19,6 +19,9 @@ export default Ember.LinkComponent.extend({
   /** @var {?String} */
   class: null,
 
+  /** @var {Function} */
+  click: () => {},
+
   /** @var {?String} */
   content: null,
 
@@ -127,6 +130,10 @@ export default Ember.LinkComponent.extend({
 
       const toggle = new MDCIconToggle(root);
       this.set('iconToggle', toggle);
+
+      this.$().on('click', () => {
+        this.get('click')(toggle.on);
+      });
     } else {
       const dialog = this.get('dialog');
       if (dialog) {
@@ -254,11 +261,11 @@ export default Ember.LinkComponent.extend({
       }
 
       this.set('disabled', false);
-    }
 
-    if (this.get('material')) {
-      const size = this.get('size');
-      this.set(`size${size}`, true);
+      if (this.get('material')) {
+        const size = this.get('size');
+        this.set(`size${size}`, true);
+      }
     }
 
     const id = this.get('id');

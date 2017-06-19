@@ -151,6 +151,17 @@ test('it supports icon toggles', function(assert) {
   assert.equal(this.$('i').attr('data-toggle-off'), '{"content":"favorite_border","label":"Add to favorites"}');
 });
 
+test('it supports the clicked attribute', function(assert) {
+  let called = false;
+
+  this.set('clickHandler', () => called = true);
+  this.render(hbs`{{mdc-icon onContent="favorite" offContent="favorite_border" click=clickHandler}}`);
+
+  this.$('i').click();
+
+  assert.equal(called, true);
+});
+
 test('it supports the disabled attribute', function(assert) {
   this.render(hbs`{{mdc-icon onContent="favorite" offContent="favorite_border" disabled=true}}`);
 
