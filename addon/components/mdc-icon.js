@@ -132,7 +132,7 @@ export default Ember.LinkComponent.extend({
       this.set('iconToggle', toggle);
 
       this.$().on('click', () => {
-        this.get('click')(toggle.on);
+        this.get('click')(toggle.on, toggle);
       });
     } else {
       const dialog = this.get('dialog');

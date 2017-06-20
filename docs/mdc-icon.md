@@ -145,7 +145,7 @@ mdc-ripple-upgraded--unbounded">
 
 ### Attributes
 
-**click** *{Function}* Function called whenever the toggle is clicked (default: `null`)
+**click** *{Function}* Function called whenever the toggle is clicked. (Passed parameters are: toggleState, MDCIconToggleInstance) (default: `null`)
 
 **disabled** *{Boolean}* Disabled the icon toggle (default: `false`)
 
