@@ -51,6 +51,9 @@ export default Ember.Component.extend({
   /** @var {?String} */
   name: null,
 
+  /** @var {Function} */
+  oninput: () => {},
+
   /** @var {Boolean} */
   required: false,
 
@@ -74,6 +77,11 @@ export default Ember.Component.extend({
     const textfield = new MDCTextfield(root);
     this.set('mdcInstance', textfield);
     root.mdcInstance = textfield;
+
+    const input = Ember.$(root).find('input');
+    input.on('input', () => {
+      this.get('oninput')(input.val());
+    });
   },
 
   /** @var {Function} */

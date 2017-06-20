@@ -30,6 +30,8 @@
 
 **name** *{String}* Sets the name attribute on the input/textarea element (default: `null`)
 
+**oninput** *{Function}* Function called whenever the input event is fired on the input element (The value of the input element is passed as the first argument) (default `null`)
+
 **required** *{Boolean}* Sets the required attribute on the input/textarea element (default: `false`)
 
 **value** *{String}* Sets the value attribute on the input/textarea element (default: `null`)
