@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
 import setupRouter from '../../helpers/setup-router';
@@ -157,15 +158,26 @@ test('it supports the clicked attribute', function(assert) {
   this.set('clickHandler', () => called = true);
   this.render(hbs`{{mdc-icon onContent="favorite" offContent="favorite_border" click=clickHandler}}`);
 
-  this.$('i').click();
+  Ember.run(() => {
+    this.$('i').click();
+  });
 
-  assert.equal(called, true);
+  Ember.run(() => {
+    assert.equal(called, true);
+  });
 });
 
 test('it supports the disabled attribute', function(assert) {
   this.render(hbs`{{mdc-icon onContent="favorite" offContent="favorite_border" disabled=true}}`);
 
   assert.equal(this.$('i').hasClass('mdc-icon-toggle--disabled'), true);
+});
+
+test('it supports the displayLabel attribute', function(assert) {
+  this.render(hbs`{{mdc-icon onContent="favorite" offContent="favorite_border" displayLabel=true}}`);
+
+  assert.equal(this.$('i')[0].parentNode.tagName, 'LABEL');
+  assert.ok(this.$('i')[0].parentNode.querySelector('span'));
 });
 
 test('it supports the pressed attribute', function(assert) {

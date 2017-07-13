@@ -34,6 +34,9 @@ export default Ember.LinkComponent.extend({
   /** @var {Boolean} */
   disabled: false,
 
+  /** @var {Boolean} */
+  displayLabel: false,
+
   /** @var {?String} */
   drawer: null,
 
@@ -132,8 +135,36 @@ export default Ember.LinkComponent.extend({
       this.set('iconToggle', toggle);
 
       this.$().on('click', () => {
-        this.get('click')(toggle.on, toggle);
+        Ember.run.once(() => {
+          this.get('click')(toggle.on, toggle);
+          if (this.get('displayLabel')) {
+            if (toggle.on) {
+              this.get('labelSpan').textContent = this.get('onLabel');
+            } else {
+              this.get('labelSpan').textContent = this.get('offLabel');
+            }
+          }
+        });
       });
+
+      if (this.get('displayLabel')) {
+        const label = document.createElement('label');
+        label.className = 'md-icon-toggle-container';
+
+        this.$().wrap(label);
+
+        const span = document.createElement('span');
+        this.set('labelSpan', span);
+
+        span.textContent = toggle.on ? this.get('onLabel') : this.get('offLabel');
+
+        this.$().after(span);
+
+        Ember.$(span).on('click', () => {
+          this.$().click();
+          toggle.ripple_.foundation_.animateActivation_();
+        });
+      }
     } else {
       const dialog = this.get('dialog');
       if (dialog) {

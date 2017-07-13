@@ -56,3 +56,12 @@
 .md-page.md-page--active {
   display: inherit;
 }
+
+.md-icon-toggle-container {
+  align-items: center;
+  display: flex;
+}
+
+.md-icon-toggle-container > span {
+  cursor: pointer;
+}

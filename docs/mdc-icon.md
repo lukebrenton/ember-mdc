@@ -149,6 +149,8 @@ mdc-ripple-upgraded--unbounded">
 
 **disabled** *{Boolean}* Disabled the icon toggle (default: `false`)
 
+**displayLabel** *{Boolean}* Displays the label next to the icon toggle (default: `false`)
+
 **iconInnerSelector** *{String}* The selector to select the inner icon (default: `null`)
 
 **offContent** *{String}* The inner content when the toggle is off (default: `null`)
