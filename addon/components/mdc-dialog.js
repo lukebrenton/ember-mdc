@@ -68,7 +68,6 @@ export default Ember.Component.extend({
     this.set('aria-describedby', `${id}-description`);
     this.set('aria-hidden', 'true');
     this.set('aria-labelledby', `${id}-label`);
-    this.set('style', Ember.String.htmlSafe('visibility: hidden;'));
   },
 
   /** @var {Object} */

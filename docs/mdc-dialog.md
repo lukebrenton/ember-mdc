@@ -18,10 +18,10 @@ name="locationDialog" as |block|}}
 Yields
 
 ```html
-<aside style="visibility: hidden;" id="ember325"
+<aside id="ember325"
 aria-labelledby="ember325-label" aria-hidden="true"
 aria-describedby="ember325-description"
-class="mdc-dialog ember-view mdc-dialog--open">
+class="mdc-dialog ember-view">
   <div class="mdc-dialog__surface">
     <header class="mdc-dialog__header">
       <h2 id="ember325-label" class="mdc-dialog__header__title">
