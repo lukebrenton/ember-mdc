@@ -60,6 +60,8 @@ This component will iterate over the items passed into it and yield them back to
 It is expecting an array of objects. Special properties that this component looks for
 in an item are as follows:
 
+**currentWhen** *{String}* When the route matches this, the `active` class is added (default: `null`)
+
 **divider** *{Boolean}* Setting this to true will yield no item so you can put in a divider (default: `false`)
 
 **href** *{String}* When using nav menus, sets the href attribute on the item (default: `null`)
