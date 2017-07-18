@@ -6,7 +6,7 @@
       {{yield item yieldDivider}}
     {{else}}
       {{#mdc-list/item item.href
-        currentWhen=(if item.currentWhen item.currentWhen null)
+        current-when=(if item.current-when item.current-when null)
         menu=menu
         model=(if item.model item.model null)
         nav=nav
