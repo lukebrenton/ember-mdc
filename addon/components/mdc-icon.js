@@ -135,6 +135,9 @@ export default Ember.LinkComponent.extend({
       this.set('iconToggle', toggle);
 
       this.$().on('click', () => {
+        this.set('fromClick', true);
+        Ember.run.debounce(this, 'setFromClickToFalse', 150);
+
         Ember.run.once(() => {
           this.get('click')(toggle.on, toggle);
           if (this.get('displayLabel')) {
@@ -311,14 +314,34 @@ export default Ember.LinkComponent.extend({
   /** @var {String} */
   tagName: 'i',
 
+  /***********
+   * Methods *
+   ***********/
+  /**
+   * Sets fromClick to false
+   */
+  setFromClickToFalse() {
+    this.set('fromClick', false);
+  },
+
   /**************
    * Properties *
    **************/
+  /** @var {Boolean} */
+  fromClick: false,
+
   /** @var {MDCIconToggle} */
   iconToggle: null,
 
   /** @var {Boolean} */
   linkDisabled: false,
+
+  /** @var {Function} */
+  pressedObserver: Ember.observer('pressed', function() {
+    if (!this.get('fromClick')) {
+      this.$().click();
+    }
+  }),
 
   /** @var {Boolean} */
   toggle: Ember.computed('{offContent,onContent,iconInnerSelector,offCSSClass,onCSSClass}', function() {
