@@ -74,14 +74,20 @@ export default Ember.Component.extend({
     const id = this.get('id');
     const root = window.document.getElementById(id);
 
-    const textfield = new MDCTextfield(root);
-    this.set('mdcInstance', textfield);
-    root.mdcInstance = textfield;
-
     const input = Ember.$(root).find('input');
     input.on('input', () => {
       this.get('oninput')(input.val());
     });
+  },
+
+  /** @var {Function} */
+  didRender() {
+    const id = this.get('id');
+    const root = window.document.getElementById(id);
+
+    const textfield = new MDCTextfield(root);
+    this.set('mdcInstance', textfield);
+    root.mdcInstance = textfield;
   },
 
   /** @var {Function} */
