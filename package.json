@@ -1,6 +1,6 @@
 {
   "name": "ember-mdc",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "material-components-web packaged into ember components",
   "keywords": [
     "ember-addon",
@@ -23,7 +23,7 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.0.10",
-    "material-components-web": "^0.12.1"
+    "material-components-web": "^0.17.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
