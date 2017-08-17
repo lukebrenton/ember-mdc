@@ -8,6 +8,9 @@ export default Ember.Component.extend({
    * Attributes *
    **************/
   /** @var {Boolean} */
+  noItems: false,
+
+  /** @var {Boolean} */
   bottomLeft: false,
 
   /** @var {Boolean} */

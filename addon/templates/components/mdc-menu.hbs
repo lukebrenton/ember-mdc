@@ -1,3 +1,7 @@
-{{#mdc-list menu=true items=items as |item|}}
-  {{yield item}}
-{{/mdc-list}}
+{{#if noItems}}
+  {{yield}}
+{{else}}
+  {{#mdc-list menu=true items=items as |item|}}
+    {{yield item}}
+  {{/mdc-list}}
+{{/if}}
